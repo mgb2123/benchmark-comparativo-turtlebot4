@@ -1,0 +1,22 @@
+# Dependencias comunes
+psutil>=5.9.0
+numpy>=1.21.0
+
+# LLM benchmark (ya instalado si usas el robot)
+llama-cpp-python>=0.2.0
+
+# STT - baseline (ya instalado)
+faster-whisper>=1.0.0
+
+# STT - alternativa
+vosk>=0.3.44
+
+# TTS - baseline (ya instalado)
+pyttsx3>=2.90
+
+# TTS - alternativa ligera
+piper-tts>=1.2.0
+
+# TTS - alternativa pesada (OPCIONAL - requiere PyTorch ~800 MB)
+# Descomentar solo si hay espacio en disco y RAM suficiente:
+# TTS>=0.20.0
