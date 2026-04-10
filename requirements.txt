@@ -1,0 +1,19 @@
+# Dependencias comunes
+psutil>=5.9.0
+numpy>=1.21.0
+
+# LLM benchmark (ya instalado si usas el robot)
+llama-cpp-python>=0.2.0
+
+# STT - baseline (ya instalado)
+faster-whisper>=1.0.0
+
+# STT - alternativa
+vosk>=0.3.44
+
+# TTS - baseline (ya instalado)
+piper-tts>=1.2.0
+
+# TTS - alternativa (Coqui TTS, requiere PyTorch ~800 MB)
+# css10/vits ~300 MB | xtts_v2 ~1.8 GB — verificar RAM disponible en RPi4
+TTS>=0.20.0
