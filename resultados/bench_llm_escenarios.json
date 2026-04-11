@@ -1,0 +1,1858 @@
+{
+  "timestamp": "2026-04-10T19:11:45.120924",
+  "hardware": {
+    "plataforma": "aarch64",
+    "cpu_cores": 4,
+    "ram_total_mb": 3789.8,
+    "ram_disponible_mb": 2844.4,
+    "sistema": "Linux-5.15.0-1097-raspi-aarch64-with-glibc2.35"
+  },
+  "modo": "quick",
+  "num_prompts": 2,
+  "escenarios": {
+    "max_tokens": {
+      "config": {
+        "variable": "max_tokens",
+        "valores": [
+          10,
+          20,
+          40,
+          60,
+          80,
+          120
+        ],
+        "fijos": {
+          "n_ctx": 256,
+          "n_threads": 2
+        },
+        "titulo": "Impacto de max_tokens en rendimiento",
+        "xlabel": "max_tokens"
+      },
+      "resultados": [
+        {
+          "modelo": "Qwen2.5-0.5B",
+          "nombre_corto": "Qwen-0.5B",
+          "archivo_mb": 498.0,
+          "puntos": [
+            {
+              "valor": 10,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 10
+              },
+              "tiempo_carga_s": 12.87,
+              "ram_carga_mb": 610.1,
+              "promedio_tps": 1.93,
+              "promedio_t_total": 3.708,
+              "promedio_t_primer_token": 2.347,
+              "promedio_cpu_pct": 214.4,
+              "ram_pico_mb": 613.9,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 4.498,
+                  "t_primer_token": 3.467,
+                  "tps": 1.11,
+                  "cpu_pct": 230.7,
+                  "ram_pico_mb": 613.9,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 2.917,
+                  "t_primer_token": 1.227,
+                  "tps": 2.74,
+                  "cpu_pct": 198.1,
+                  "ram_pico_mb": 613.9,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 20,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 20
+              },
+              "tiempo_carga_s": 1.15,
+              "ram_carga_mb": 612.3,
+              "promedio_tps": 1.83,
+              "promedio_t_total": 3.944,
+              "promedio_t_primer_token": 2.378,
+              "promedio_cpu_pct": 206.6,
+              "ram_pico_mb": 617.4,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 4.85,
+                  "t_primer_token": 3.435,
+                  "tps": 1.03,
+                  "cpu_pct": 218.7,
+                  "ram_pico_mb": 617.4,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 3.039,
+                  "t_primer_token": 1.322,
+                  "tps": 2.63,
+                  "cpu_pct": 194.4,
+                  "ram_pico_mb": 617.4,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 40,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 40
+              },
+              "tiempo_carga_s": 1.06,
+              "ram_carga_mb": 614.1,
+              "promedio_tps": 2.04,
+              "promedio_t_total": 3.519,
+              "promedio_t_primer_token": 2.127,
+              "promedio_cpu_pct": 221.0,
+              "ram_pico_mb": 617.4,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 4.304,
+                  "t_primer_token": 3.171,
+                  "tps": 1.16,
+                  "cpu_pct": 237.6,
+                  "ram_pico_mb": 617.4,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 2.734,
+                  "t_primer_token": 1.083,
+                  "tps": 2.93,
+                  "cpu_pct": 204.4,
+                  "ram_pico_mb": 617.4,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 60,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 60
+              },
+              "tiempo_carga_s": 1.13,
+              "ram_carga_mb": 614.2,
+              "promedio_tps": 2.06,
+              "promedio_t_total": 3.527,
+              "promedio_t_primer_token": 2.31,
+              "promedio_cpu_pct": 222.1,
+              "ram_pico_mb": 617.5,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 4.379,
+                  "t_primer_token": 3.457,
+                  "tps": 1.14,
+                  "cpu_pct": 236.1,
+                  "ram_pico_mb": 617.5,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 2.676,
+                  "t_primer_token": 1.163,
+                  "tps": 2.99,
+                  "cpu_pct": 208.1,
+                  "ram_pico_mb": 617.5,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 80,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 1.09,
+              "ram_carga_mb": 472.4,
+              "promedio_tps": 1.78,
+              "promedio_t_total": 3.801,
+              "promedio_t_primer_token": 2.351,
+              "promedio_cpu_pct": 215.2,
+              "ram_pico_mb": 617.5,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 4.26,
+                  "t_primer_token": 3.212,
+                  "tps": 1.17,
+                  "cpu_pct": 242.0,
+                  "ram_pico_mb": 617.5,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 3.342,
+                  "t_primer_token": 1.489,
+                  "tps": 2.39,
+                  "cpu_pct": 188.5,
+                  "ram_pico_mb": 617.5,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 120,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 120
+              },
+              "tiempo_carga_s": 1.11,
+              "ram_carga_mb": 299.2,
+              "promedio_tps": 1.88,
+              "promedio_t_total": 3.76,
+              "promedio_t_primer_token": 2.395,
+              "promedio_cpu_pct": 214.4,
+              "ram_pico_mb": 617.4,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 4.473,
+                  "t_primer_token": 3.39,
+                  "tps": 1.12,
+                  "cpu_pct": 233.0,
+                  "ram_pico_mb": 617.4,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 3.047,
+                  "t_primer_token": 1.4,
+                  "tps": 2.63,
+                  "cpu_pct": 195.9,
+                  "ram_pico_mb": 617.4,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "modelo": "TinyLlama-1.1B",
+          "nombre_corto": "TinyLlama-1.1B",
+          "archivo_mb": 637.8,
+          "puntos": [
+            {
+              "valor": 10,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 10
+              },
+              "tiempo_carga_s": 15.13,
+              "ram_carga_mb": 756.8,
+              "promedio_tps": 1.41,
+              "promedio_t_total": 8.114,
+              "promedio_t_primer_token": 5.05,
+              "promedio_cpu_pct": 220.4,
+              "ram_pico_mb": 763.5,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de",
+                  "tokens_gen": 10,
+                  "tokens_aprox": 7,
+                  "respuesta_truncada": false,
+                  "t_total": 10.954,
+                  "t_primer_token": 7.661,
+                  "tps": 0.91,
+                  "cpu_pct": 230.2,
+                  "ram_pico_mb": 763.5,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asi",
+                  "tokens_gen": 10,
+                  "tokens_aprox": 6,
+                  "respuesta_truncada": false,
+                  "t_total": 5.274,
+                  "t_primer_token": 2.44,
+                  "tps": 1.9,
+                  "cpu_pct": 210.6,
+                  "ram_pico_mb": 763.5,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 20,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 20
+              },
+              "tiempo_carga_s": 0.31,
+              "ram_carga_mb": 758.1,
+              "promedio_tps": 1.96,
+              "promedio_t_total": 10.9,
+              "promedio_t_primer_token": 5.359,
+              "promedio_cpu_pct": 211.1,
+              "ram_pico_mb": 763.4,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A",
+                  "tokens_gen": 20,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 13.62,
+                  "t_primer_token": 8.159,
+                  "tps": 1.47,
+                  "cpu_pct": 220.5,
+                  "ram_pico_mb": 763.4,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español",
+                  "tokens_gen": 20,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 8.18,
+                  "t_primer_token": 2.559,
+                  "tps": 2.44,
+                  "cpu_pct": 201.7,
+                  "ram_pico_mb": 763.4,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 40,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 40
+              },
+              "tiempo_carga_s": 0.3,
+              "ram_carga_mb": 229.1,
+              "promedio_tps": 2.01,
+              "promedio_t_total": 13.834,
+              "promedio_t_primer_token": 5.457,
+              "promedio_cpu_pct": 197.6,
+              "ram_pico_mb": 763.3,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 16.451,
+                  "t_primer_token": 8.357,
+                  "tps": 1.52,
+                  "cpu_pct": 206.2,
+                  "ram_pico_mb": 763.3,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 11.216,
+                  "t_primer_token": 2.557,
+                  "tps": 2.5,
+                  "cpu_pct": 188.9,
+                  "ram_pico_mb": 763.3,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 60,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 60
+              },
+              "tiempo_carga_s": 0.3,
+              "ram_carga_mb": 183.6,
+              "promedio_tps": 2.06,
+              "promedio_t_total": 13.248,
+              "promedio_t_primer_token": 5.028,
+              "promedio_cpu_pct": 204.0,
+              "ram_pico_mb": 763.5,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 15.209,
+                  "t_primer_token": 7.587,
+                  "tps": 1.64,
+                  "cpu_pct": 219.0,
+                  "ram_pico_mb": 763.5,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 11.288,
+                  "t_primer_token": 2.469,
+                  "tps": 2.48,
+                  "cpu_pct": 189.0,
+                  "ram_pico_mb": 763.5,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 80,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.34,
+              "ram_carga_mb": 732.3,
+              "promedio_tps": 2.1,
+              "promedio_t_total": 13.191,
+              "promedio_t_primer_token": 5.45,
+              "promedio_cpu_pct": 205.9,
+              "ram_pico_mb": 763.4,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 15.628,
+                  "t_primer_token": 8.214,
+                  "tps": 1.6,
+                  "cpu_pct": 213.9,
+                  "ram_pico_mb": 763.4,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 10.754,
+                  "t_primer_token": 2.685,
+                  "tps": 2.6,
+                  "cpu_pct": 197.8,
+                  "ram_pico_mb": 763.4,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 120,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 120
+              },
+              "tiempo_carga_s": 0.32,
+              "ram_carga_mb": 758.1,
+              "promedio_tps": 1.99,
+              "promedio_t_total": 13.936,
+              "promedio_t_primer_token": 5.507,
+              "promedio_cpu_pct": 197.3,
+              "ram_pico_mb": 763.4,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 16.499,
+                  "t_primer_token": 8.553,
+                  "tps": 1.52,
+                  "cpu_pct": 206.7,
+                  "ram_pico_mb": 763.4,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 11.373,
+                  "t_primer_token": 2.46,
+                  "tps": 2.46,
+                  "cpu_pct": 188.0,
+                  "ram_pico_mb": 763.4,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "modelo": "Phi-2 2.7B",
+          "nombre_corto": "Phi-2-2.7B",
+          "archivo_mb": 1706.4,
+          "puntos": [
+            {
+              "valor": 10,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 10
+              },
+              "tiempo_carga_s": 40.42,
+              "ram_carga_mb": 1873.8,
+              "promedio_tps": 0.64,
+              "promedio_t_total": 18.12,
+              "promedio_t_primer_token": 10.79,
+              "promedio_cpu_pct": 222.0,
+              "ram_pico_mb": 1911.9,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente.",
+                  "tokens_gen": 10,
+                  "tokens_aprox": 5,
+                  "respuesta_truncada": false,
+                  "t_total": 24.585,
+                  "t_primer_token": 17.253,
+                  "tps": 0.41,
+                  "cpu_pct": 242.9,
+                  "ram_pico_mb": 1911.9,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente.",
+                  "tokens_gen": 10,
+                  "tokens_aprox": 5,
+                  "respuesta_truncada": false,
+                  "t_total": 11.655,
+                  "t_primer_token": 4.326,
+                  "tps": 0.86,
+                  "cpu_pct": 201.1,
+                  "ram_pico_mb": 1911.9,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 20,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 20
+              },
+              "tiempo_carga_s": 0.79,
+              "ram_carga_mb": 1878.7,
+              "promedio_tps": 0.79,
+              "promedio_t_total": 26.938,
+              "promedio_t_primer_token": 11.451,
+              "promedio_cpu_pct": 206.3,
+              "ram_pico_mb": 1911.6,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español,",
+                  "tokens_gen": 20,
+                  "tokens_aprox": 9,
+                  "respuesta_truncada": false,
+                  "t_total": 33.971,
+                  "t_primer_token": 18.198,
+                  "tps": 0.59,
+                  "cpu_pct": 220.7,
+                  "ram_pico_mb": 1911.6,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español,",
+                  "tokens_gen": 20,
+                  "tokens_aprox": 9,
+                  "respuesta_truncada": false,
+                  "t_total": 19.904,
+                  "t_primer_token": 4.704,
+                  "tps": 1.0,
+                  "cpu_pct": 192.0,
+                  "ram_pico_mb": 1911.6,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 40,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 40
+              },
+              "tiempo_carga_s": 0.75,
+              "ram_carga_mb": 1895.0,
+              "promedio_tps": 0.79,
+              "promedio_t_total": 31.703,
+              "promedio_t_primer_token": 11.619,
+              "promedio_cpu_pct": 199.1,
+              "ram_pico_mb": 1911.8,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 38.385,
+                  "t_primer_token": 18.725,
+                  "tps": 0.63,
+                  "cpu_pct": 215.1,
+                  "ram_pico_mb": 1911.8,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 25.022,
+                  "t_primer_token": 4.513,
+                  "tps": 0.96,
+                  "cpu_pct": 183.0,
+                  "ram_pico_mb": 1911.8,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 60,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 60
+              },
+              "tiempo_carga_s": 0.73,
+              "ram_carga_mb": 1900.3,
+              "promedio_tps": 0.81,
+              "promedio_t_total": 31.197,
+              "promedio_t_primer_token": 11.428,
+              "promedio_cpu_pct": 203.8,
+              "ram_pico_mb": 1911.8,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 38.457,
+                  "t_primer_token": 18.348,
+                  "tps": 0.62,
+                  "cpu_pct": 217.2,
+                  "ram_pico_mb": 1911.8,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 23.936,
+                  "t_primer_token": 4.509,
+                  "tps": 1.0,
+                  "cpu_pct": 190.5,
+                  "ram_pico_mb": 1911.8,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 80,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.73,
+              "ram_carga_mb": 1900.3,
+              "promedio_tps": 0.79,
+              "promedio_t_total": 32.097,
+              "promedio_t_primer_token": 11.915,
+              "promedio_cpu_pct": 200.7,
+              "ram_pico_mb": 1911.8,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 39.497,
+                  "t_primer_token": 19.448,
+                  "tps": 0.61,
+                  "cpu_pct": 213.2,
+                  "ram_pico_mb": 1911.8,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 24.697,
+                  "t_primer_token": 4.381,
+                  "tps": 0.97,
+                  "cpu_pct": 188.2,
+                  "ram_pico_mb": 1911.8,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 120,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 120
+              },
+              "tiempo_carga_s": 0.75,
+              "ram_carga_mb": 1895.3,
+              "promedio_tps": 0.85,
+              "promedio_t_total": 30.387,
+              "promedio_t_primer_token": 11.56,
+              "promedio_cpu_pct": 211.2,
+              "ram_pico_mb": 1911.7,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 38.578,
+                  "t_primer_token": 18.621,
+                  "tps": 0.62,
+                  "cpu_pct": 219.9,
+                  "ram_pico_mb": 1911.7,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 22.196,
+                  "t_primer_token": 4.499,
+                  "tps": 1.08,
+                  "cpu_pct": 202.6,
+                  "ram_pico_mb": 1911.7,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "n_ctx": {
+      "config": {
+        "variable": "n_ctx",
+        "valores": [
+          128,
+          192,
+          256,
+          384,
+          512
+        ],
+        "fijos": {
+          "max_tokens": 80,
+          "n_threads": 2
+        },
+        "titulo": "Impacto de n_ctx (tamaño contexto) en rendimiento",
+        "xlabel": "n_ctx (tokens de contexto)"
+      },
+      "resultados": [
+        {
+          "modelo": "Qwen2.5-0.5B",
+          "nombre_corto": "Qwen-0.5B",
+          "archivo_mb": 498.0,
+          "puntos": [
+            {
+              "valor": 128,
+              "params": {
+                "n_ctx": 128,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 12.7,
+              "ram_carga_mb": 611.3,
+              "promedio_tps": 2.47,
+              "promedio_t_total": 2.904,
+              "promedio_t_primer_token": 1.772,
+              "promedio_cpu_pct": 252.4,
+              "ram_pico_mb": 613.2,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 3.532,
+                  "t_primer_token": 2.665,
+                  "tps": 1.42,
+                  "cpu_pct": 276.3,
+                  "ram_pico_mb": 613.0,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 2.275,
+                  "t_primer_token": 0.879,
+                  "tps": 3.52,
+                  "cpu_pct": 228.5,
+                  "ram_pico_mb": 613.2,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 192,
+              "params": {
+                "n_ctx": 192,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 1.04,
+              "ram_carga_mb": 610.2,
+              "promedio_tps": 1.97,
+              "promedio_t_total": 3.52,
+              "promedio_t_primer_token": 2.091,
+              "promedio_cpu_pct": 224.8,
+              "ram_pico_mb": 613.4,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 4.1,
+                  "t_primer_token": 2.954,
+                  "tps": 1.22,
+                  "cpu_pct": 246.1,
+                  "ram_pico_mb": 613.4,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 2.941,
+                  "t_primer_token": 1.227,
+                  "tps": 2.72,
+                  "cpu_pct": 203.6,
+                  "ram_pico_mb": 613.4,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 256,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 1.41,
+              "ram_carga_mb": 614.6,
+              "promedio_tps": 1.27,
+              "promedio_t_total": 5.897,
+              "promedio_t_primer_token": 4.208,
+              "promedio_cpu_pct": 152.7,
+              "ram_pico_mb": 613.5,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 7.567,
+                  "t_primer_token": 6.331,
+                  "tps": 0.66,
+                  "cpu_pct": 148.5,
+                  "ram_pico_mb": 613.4,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 4.228,
+                  "t_primer_token": 2.084,
+                  "tps": 1.89,
+                  "cpu_pct": 156.8,
+                  "ram_pico_mb": 613.5,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 384,
+              "params": {
+                "n_ctx": 384,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 1.28,
+              "ram_carga_mb": 604.9,
+              "promedio_tps": 1.96,
+              "promedio_t_total": 4.502,
+              "promedio_t_primer_token": 2.877,
+              "promedio_cpu_pct": 199.8,
+              "ram_pico_mb": 609.5,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 6.453,
+                  "t_primer_token": 4.637,
+                  "tps": 0.77,
+                  "cpu_pct": 180.2,
+                  "ram_pico_mb": 609.5,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 2.55,
+                  "t_primer_token": 1.118,
+                  "tps": 3.14,
+                  "cpu_pct": 219.5,
+                  "ram_pico_mb": 609.5,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 512,
+              "params": {
+                "n_ctx": 512,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 1.07,
+              "ram_carga_mb": 606.0,
+              "promedio_tps": 1.51,
+              "promedio_t_total": 4.259,
+              "promedio_t_primer_token": 2.064,
+              "promedio_cpu_pct": 205.0,
+              "ram_pico_mb": 615.6,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 3.743,
+                  "t_primer_token": 2.77,
+                  "tps": 1.34,
+                  "cpu_pct": 268.2,
+                  "ram_pico_mb": 615.6,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 4.775,
+                  "t_primer_token": 1.359,
+                  "tps": 1.68,
+                  "cpu_pct": 141.8,
+                  "ram_pico_mb": 615.6,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "modelo": "TinyLlama-1.1B",
+          "nombre_corto": "TinyLlama-1.1B",
+          "archivo_mb": 637.8,
+          "puntos": [
+            {
+              "valor": 128,
+              "params": {
+                "n_ctx": 128,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 16.08,
+              "ram_carga_mb": 753.9,
+              "promedio_tps": 2.15,
+              "promedio_t_total": 13.068,
+              "promedio_t_primer_token": 5.109,
+              "promedio_cpu_pct": 209.7,
+              "ram_pico_mb": 758.0,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 15.824,
+                  "t_primer_token": 7.92,
+                  "tps": 1.58,
+                  "cpu_pct": 214.0,
+                  "ram_pico_mb": 758.0,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 10.312,
+                  "t_primer_token": 2.299,
+                  "tps": 2.72,
+                  "cpu_pct": 205.3,
+                  "ram_pico_mb": 758.0,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 192,
+              "params": {
+                "n_ctx": 192,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.3,
+              "ram_carga_mb": 207.7,
+              "promedio_tps": 1.98,
+              "promedio_t_total": 13.677,
+              "promedio_t_primer_token": 5.563,
+              "promedio_cpu_pct": 207.5,
+              "ram_pico_mb": 763.3,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 15.312,
+                  "t_primer_token": 7.122,
+                  "tps": 1.63,
+                  "cpu_pct": 226.6,
+                  "ram_pico_mb": 763.3,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 12.043,
+                  "t_primer_token": 4.005,
+                  "tps": 2.33,
+                  "cpu_pct": 188.4,
+                  "ram_pico_mb": 763.3,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 256,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.3,
+              "ram_carga_mb": 224.1,
+              "promedio_tps": 2.12,
+              "promedio_t_total": 12.668,
+              "promedio_t_primer_token": 4.665,
+              "promedio_cpu_pct": 219.4,
+              "ram_pico_mb": 763.5,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 13.865,
+                  "t_primer_token": 7.126,
+                  "tps": 1.8,
+                  "cpu_pct": 247.9,
+                  "ram_pico_mb": 763.5,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 11.47,
+                  "t_primer_token": 2.205,
+                  "tps": 2.44,
+                  "cpu_pct": 190.8,
+                  "ram_pico_mb": 763.5,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 384,
+              "params": {
+                "n_ctx": 384,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.3,
+              "ram_carga_mb": 212.6,
+              "promedio_tps": 2.24,
+              "promedio_t_total": 12.349,
+              "promedio_t_primer_token": 5.053,
+              "promedio_cpu_pct": 223.3,
+              "ram_pico_mb": 763.5,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 14.479,
+                  "t_primer_token": 7.734,
+                  "tps": 1.73,
+                  "cpu_pct": 237.3,
+                  "ram_pico_mb": 763.5,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 10.219,
+                  "t_primer_token": 2.373,
+                  "tps": 2.74,
+                  "cpu_pct": 209.3,
+                  "ram_pico_mb": 763.5,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 512,
+              "params": {
+                "n_ctx": 512,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.3,
+              "ram_carga_mb": 245.5,
+              "promedio_tps": 2.33,
+              "promedio_t_total": 11.881,
+              "promedio_t_primer_token": 4.758,
+              "promedio_cpu_pct": 231.8,
+              "ram_pico_mb": 763.3,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 14.012,
+                  "t_primer_token": 7.276,
+                  "tps": 1.78,
+                  "cpu_pct": 246.7,
+                  "ram_pico_mb": 763.3,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 9.749,
+                  "t_primer_token": 2.24,
+                  "tps": 2.87,
+                  "cpu_pct": 216.8,
+                  "ram_pico_mb": 763.3,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "modelo": "Phi-2 2.7B",
+          "nombre_corto": "Phi-2-2.7B",
+          "archivo_mb": 1706.4,
+          "puntos": [
+            {
+              "valor": 128,
+              "params": {
+                "n_ctx": 128,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 40.61,
+              "ram_carga_mb": 1849.1,
+              "promedio_tps": 0.88,
+              "promedio_t_total": 29.168,
+              "promedio_t_primer_token": 10.569,
+              "promedio_cpu_pct": 211.0,
+              "ram_pico_mb": 1869.6,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 36.232,
+                  "t_primer_token": 17.086,
+                  "tps": 0.66,
+                  "cpu_pct": 222.3,
+                  "ram_pico_mb": 1869.6,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 22.104,
+                  "t_primer_token": 4.052,
+                  "tps": 1.09,
+                  "cpu_pct": 199.7,
+                  "ram_pico_mb": 1869.3,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 192,
+              "params": {
+                "n_ctx": 192,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.69,
+              "ram_carga_mb": 1845.4,
+              "promedio_tps": 0.92,
+              "promedio_t_total": 28.304,
+              "promedio_t_primer_token": 9.93,
+              "promedio_cpu_pct": 220.9,
+              "ram_pico_mb": 1889.0,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 36.038,
+                  "t_primer_token": 16.211,
+                  "tps": 0.67,
+                  "cpu_pct": 230.9,
+                  "ram_pico_mb": 1889.0,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 20.57,
+                  "t_primer_token": 3.65,
+                  "tps": 1.17,
+                  "cpu_pct": 211.0,
+                  "ram_pico_mb": 1888.6,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 256,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.77,
+              "ram_carga_mb": 1879.8,
+              "promedio_tps": 0.04,
+              "promedio_t_total": 705.995,
+              "promedio_t_primer_token": 34.653,
+              "promedio_cpu_pct": 23.4,
+              "ram_pico_mb": 1907.8,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 495.698,
+                  "t_primer_token": 18.099,
+                  "tps": 0.05,
+                  "cpu_pct": 30.2,
+                  "ram_pico_mb": 1907.8,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 916.291,
+                  "t_primer_token": 51.207,
+                  "tps": 0.03,
+                  "cpu_pct": 16.5,
+                  "ram_pico_mb": 1832.3,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 384,
+              "params": {
+                "n_ctx": 384,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 2.63,
+              "ram_carga_mb": 1939.2,
+              "promedio_tps": 0.98,
+              "promedio_t_total": 25.498,
+              "promedio_t_primer_token": 9.203,
+              "promedio_cpu_pct": 230.1,
+              "ram_pico_mb": 1946.0,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 30.819,
+                  "t_primer_token": 14.868,
+                  "tps": 0.78,
+                  "cpu_pct": 249.8,
+                  "ram_pico_mb": 1945.5,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 20.177,
+                  "t_primer_token": 3.537,
+                  "tps": 1.19,
+                  "cpu_pct": 210.4,
+                  "ram_pico_mb": 1946.0,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 512,
+              "params": {
+                "n_ctx": 512,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.94,
+              "ram_carga_mb": 1969.4,
+              "promedio_tps": 0.91,
+              "promedio_t_total": 28.961,
+              "promedio_t_primer_token": 12.062,
+              "promedio_cpu_pct": 216.4,
+              "ram_pico_mb": 1979.9,
+              "prompts": [
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 37.383,
+                  "t_primer_token": 20.419,
+                  "tps": 0.64,
+                  "cpu_pct": 220.1,
+                  "ram_pico_mb": 1979.9,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Eres Ana, un robot asistente. Responde SOLO en español, maximo",
+                  "tokens_gen": 24,
+                  "tokens_aprox": 10,
+                  "respuesta_truncada": false,
+                  "t_total": 20.538,
+                  "t_primer_token": 3.704,
+                  "tps": 1.17,
+                  "cpu_pct": 212.8,
+                  "ram_pico_mb": 1945.2,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "n_threads": {
+      "config": {
+        "variable": "n_threads",
+        "valores": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "fijos": {
+          "max_tokens": 80,
+          "n_ctx": 256
+        },
+        "titulo": "Impacto de n_threads en rendimiento",
+        "xlabel": "n_threads (hilos CPU)"
+      },
+      "resultados": [
+        {
+          "modelo": "Qwen2.5-0.5B",
+          "nombre_corto": "Qwen-0.5B",
+          "archivo_mb": 498.0,
+          "puntos": [
+            {
+              "valor": 1,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 1,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 12.72,
+              "ram_carga_mb": 609.4,
+              "promedio_tps": 1.96,
+              "promedio_t_total": 3.498,
+              "promedio_t_primer_token": 1.804,
+              "promedio_cpu_pct": 197.8,
+              "ram_pico_mb": 610.0,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 3.972,
+                  "t_primer_token": 2.67,
+                  "tps": 1.26,
+                  "cpu_pct": 238.7,
+                  "ram_pico_mb": 610.0,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 3.024,
+                  "t_primer_token": 0.937,
+                  "tps": 2.65,
+                  "cpu_pct": 157.0,
+                  "ram_pico_mb": 610.0,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 2,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 1.05,
+              "ram_carga_mb": 606.7,
+              "promedio_tps": 2.47,
+              "promedio_t_total": 2.867,
+              "promedio_t_primer_token": 1.758,
+              "promedio_cpu_pct": 255.8,
+              "ram_pico_mb": 609.9,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 3.431,
+                  "t_primer_token": 2.579,
+                  "tps": 1.46,
+                  "cpu_pct": 281.5,
+                  "ram_pico_mb": 609.9,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 2.302,
+                  "t_primer_token": 0.936,
+                  "tps": 3.48,
+                  "cpu_pct": 230.2,
+                  "ram_pico_mb": 609.9,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 3,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 3,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 1.04,
+              "ram_carga_mb": 606.6,
+              "promedio_tps": 2.28,
+              "promedio_t_total": 3.107,
+              "promedio_t_primer_token": 1.86,
+              "promedio_cpu_pct": 269.0,
+              "ram_pico_mb": 609.9,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 3.732,
+                  "t_primer_token": 2.779,
+                  "tps": 1.34,
+                  "cpu_pct": 282.9,
+                  "ram_pico_mb": 609.9,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 2.481,
+                  "t_primer_token": 0.941,
+                  "tps": 3.22,
+                  "cpu_pct": 255.1,
+                  "ram_pico_mb": 609.9,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 4,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 4,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 1.05,
+              "ram_carga_mb": 606.5,
+              "promedio_tps": 1.67,
+              "promedio_t_total": 4.031,
+              "promedio_t_primer_token": 1.817,
+              "promedio_cpu_pct": 270.8,
+              "ram_pico_mb": 609.7,
+              "prompts": [
+                {
+                  "texto": "14:00",
+                  "tokens_gen": 5,
+                  "tokens_aprox": 1,
+                  "respuesta_truncada": false,
+                  "t_total": 4.432,
+                  "t_primer_token": 2.685,
+                  "tps": 1.13,
+                  "cpu_pct": 282.9,
+                  "ram_pico_mb": 609.7,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Estoy llamado Eres Ana.",
+                  "tokens_gen": 8,
+                  "tokens_aprox": 4,
+                  "respuesta_truncada": false,
+                  "t_total": 3.63,
+                  "t_primer_token": 0.949,
+                  "tps": 2.2,
+                  "cpu_pct": 258.6,
+                  "ram_pico_mb": 609.7,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "modelo": "TinyLlama-1.1B",
+          "nombre_corto": "TinyLlama-1.1B",
+          "archivo_mb": 637.8,
+          "puntos": [
+            {
+              "valor": 1,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 1,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 15.13,
+              "ram_carga_mb": 748.3,
+              "promedio_tps": 1.8,
+              "promedio_t_total": 14.962,
+              "promedio_t_primer_token": 4.335,
+              "promedio_cpu_pct": 157.7,
+              "ram_pico_mb": 755.4,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 16.465,
+                  "t_primer_token": 6.447,
+                  "tps": 1.52,
+                  "cpu_pct": 182.9,
+                  "ram_pico_mb": 755.4,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 13.458,
+                  "t_primer_token": 2.223,
+                  "tps": 2.08,
+                  "cpu_pct": 132.4,
+                  "ram_pico_mb": 755.4,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 2,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 2,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.31,
+              "ram_carga_mb": 749.9,
+              "promedio_tps": 2.5,
+              "promedio_t_total": 10.96,
+              "promedio_t_primer_token": 4.264,
+              "promedio_cpu_pct": 236.7,
+              "ram_pico_mb": 755.3,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 12.666,
+                  "t_primer_token": 6.386,
+                  "tps": 1.97,
+                  "cpu_pct": 253.5,
+                  "ram_pico_mb": 755.3,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 9.254,
+                  "t_primer_token": 2.142,
+                  "tps": 3.03,
+                  "cpu_pct": 219.9,
+                  "ram_pico_mb": 755.3,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 3,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 3,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.33,
+              "ram_carga_mb": 748.9,
+              "promedio_tps": 2.2,
+              "promedio_t_total": 12.418,
+              "promedio_t_primer_token": 4.495,
+              "promedio_cpu_pct": 259.9,
+              "ram_pico_mb": 755.3,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 14.262,
+                  "t_primer_token": 6.757,
+                  "tps": 1.75,
+                  "cpu_pct": 269.7,
+                  "ram_pico_mb": 755.2,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 10.573,
+                  "t_primer_token": 2.232,
+                  "tps": 2.65,
+                  "cpu_pct": 250.1,
+                  "ram_pico_mb": 755.3,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            },
+            {
+              "valor": 4,
+              "params": {
+                "n_ctx": 256,
+                "n_threads": 4,
+                "max_tokens": 80
+              },
+              "tiempo_carga_s": 0.31,
+              "ram_carga_mb": 749.8,
+              "promedio_tps": 1.64,
+              "promedio_t_total": 16.522,
+              "promedio_t_primer_token": 4.612,
+              "promedio_cpu_pct": 265.2,
+              "ram_pico_mb": 755.2,
+              "prompts": [
+                {
+                  "texto": "El horario de la noche es de 10:00 p.m. A partir de este momento.",
+                  "tokens_gen": 25,
+                  "tokens_aprox": 14,
+                  "respuesta_truncada": false,
+                  "t_total": 18.279,
+                  "t_primer_token": 6.999,
+                  "tps": 1.37,
+                  "cpu_pct": 271.4,
+                  "ram_pico_mb": 755.0,
+                  "prompt": "qué hora es"
+                },
+                {
+                  "texto": "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras.",
+                  "tokens_gen": 28,
+                  "tokens_aprox": 13,
+                  "respuesta_truncada": false,
+                  "t_total": 14.765,
+                  "t_primer_token": 2.225,
+                  "tps": 1.9,
+                  "cpu_pct": 259.0,
+                  "ram_pico_mb": 755.2,
+                  "prompt": "cómo te llamas"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "pipeline": [
+    {
+      "nombre": "faster-whisper + Qwen-0.5B + piper",
+      "pipeline_tipo": "secuencial",
+      "stt": "faster-whisper",
+      "llm": "Qwen-0.5B",
+      "tts": "piper",
+      "stt_s": 1.5,
+      "llm_s": 3.801,
+      "tts_s": 0.5,
+      "total_s": 5.8,
+      "stt_ram_mb": 180,
+      "llm_ram_mb": 617.5,
+      "tts_ram_mb": 80,
+      "ram_pico_mb": 617.5
+    },
+    {
+      "nombre": "faster-whisper + TinyLlama-1.1B + piper",
+      "pipeline_tipo": "secuencial",
+      "stt": "faster-whisper",
+      "llm": "TinyLlama-1.1B",
+      "tts": "piper",
+      "stt_s": 1.5,
+      "llm_s": 13.191,
+      "tts_s": 0.5,
+      "total_s": 15.19,
+      "stt_ram_mb": 180,
+      "llm_ram_mb": 763.4,
+      "tts_ram_mb": 80,
+      "ram_pico_mb": 763.4
+    },
+    {
+      "nombre": "faster-whisper + Phi-2-2.7B + piper",
+      "pipeline_tipo": "secuencial",
+      "stt": "faster-whisper",
+      "llm": "Phi-2-2.7B",
+      "tts": "piper",
+      "stt_s": 1.5,
+      "llm_s": 32.097,
+      "tts_s": 0.5,
+      "total_s": 34.1,
+      "stt_ram_mb": 180,
+      "llm_ram_mb": 1911.8,
+      "tts_ram_mb": 80,
+      "ram_pico_mb": 1911.8
+    }
+  ]
+}
