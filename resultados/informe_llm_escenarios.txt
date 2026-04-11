@@ -1,6 +1,6 @@
 ================================================================================
 INFORME DETALLADO: COMPARATIVA LLM — BARRIDO PARAMÉTRICO
-Fecha: 2026-04-10 19:11
+Fecha: 2026-04-11 20:36
 ================================================================================
 
 HARDWARE
@@ -8,8 +8,8 @@ HARDWARE
   Plataforma:  aarch64
   CPU cores:   4
   RAM total:   3789.8 MB
-  RAM libre:   2844.4 MB
-  Sistema:     Linux-5.15.0-1097-raspi-aarch64-with-glibc2.35
+  RAM libre:   3062.1 MB
+  Sistema:     Linux-5.15.0-1098-raspi-aarch64-with-glibc2.35
 
 
 ================================================================================
@@ -22,87 +22,279 @@ Parámetros fijos: {'n_ctx': 256, 'n_threads': 2}
   │
   ├─ max_tokens = 10
   │  Params: n_ctx=256, threads=2, max_tokens=10
-  │  Carga: 12.87s | RAM carga: 610.1 MB | RAM pico: 613.9 MB
-  │  Promedios: 1.93 tok/s | 3.708s total | 2.347s 1er token | CPU 214.4%
+  │  Carga: 12.65s | RAM carga: 613.5 MB | RAM pico: 614.9 MB
+  │  Promedios: 3.62 tok/s | 2.815s total | 1.363s 1er token | CPU 251.1%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 4.498s, 1.11 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información"
+  │       (10 tok, 4.119s, 2.43 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 2.917s, 2.74 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi"
+  │       (10 tok, 2.52s, 3.97 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información"
+  │       (10 tok, 2.617s, 3.82 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento"
+  │       (10 tok, 2.812s, 3.56 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información"
+  │       (10 tok, 2.675s, 3.74 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o"
+  │       (10 tok, 2.701s, 3.7 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información"
+  │       (10 tok, 2.562s, 3.9 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no"
+  │       (10 tok, 2.788s, 3.59 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte"
+  │       (10 tok, 2.631s, 3.8 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi"
+  │       (10 tok, 2.721s, 3.68 tok/s)
   │
   ├─ max_tokens = 20
   │  Params: n_ctx=256, threads=2, max_tokens=20
-  │  Carga: 1.15s | RAM carga: 612.3 MB | RAM pico: 617.4 MB
-  │  Promedios: 1.83 tok/s | 3.944s total | 2.378s 1er token | CPU 206.6%
+  │  Carga: 1.02s | RAM carga: 613.0 MB | RAM pico: 618.3 MB
+  │  Promedios: 4.46 tok/s | 4.273s total | 1.345s 1er token | CPU 232.2%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 4.85s, 1.03 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función"
+  │       (20 tok, 5.704s, 3.51 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 3.039s, 2.63 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic."
+  │       (20 tok, 4.181s, 4.78 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona."
+  │       (20 tok, 4.165s, 4.8 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.092s, 3.56 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas"
+  │       (20 tok, 4.256s, 4.7 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.271s, 4.45 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio."
+  │       (20 tok, 4.233s, 4.73 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubic"
+  │       (20 tok, 4.363s, 4.58 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con"
+  │       (20 tok, 4.293s, 4.66 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcion"
+  │       (20 tok, 4.169s, 4.8 tok/s)
   │
   ├─ max_tokens = 40
   │  Params: n_ctx=256, threads=2, max_tokens=40
-  │  Carga: 1.06s | RAM carga: 614.1 MB | RAM pico: 617.4 MB
-  │  Promedios: 2.04 tok/s | 3.519s total | 2.127s 1er token | CPU 221.0%
+  │  Carga: 1.06s | RAM carga: 614.8 MB | RAM pico: 618.3 MB
+  │  Promedios: 4.87 tok/s | 6.528s total | 1.35s 1er token | CPU 220.7%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 4.304s, 1.16 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 8.962s, 4.35 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 2.734s, 2.93 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas"
+  │       (40 tok, 7.548s, 5.3 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.479s, 5.09 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.132s, 3.51 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar"
+  │       (40 tok, 7.456s, 5.36 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.368s, 4.35 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar"
+  │       (40 tok, 7.442s, 5.37 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores"
+  │       (40 tok, 7.639s, 5.24 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 4.859s, 4.73 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas"
+  │       (40 tok, 7.399s, 5.41 tok/s)
   │
   ├─ max_tokens = 60
   │  Params: n_ctx=256, threads=2, max_tokens=60
-  │  Carga: 1.13s | RAM carga: 614.2 MB | RAM pico: 617.5 MB
-  │  Promedios: 2.06 tok/s | 3.527s total | 2.31s 1er token | CPU 222.1%
+  │  Carga: 1.0s | RAM carga: 341.1 MB | RAM pico: 618.4 MB
+  │  Promedios: 4.87 tok/s | 7.465s total | 1.362s 1er token | CPU 219.0%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 4.379s, 1.14 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 9.071s, 4.3 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 2.676s, 2.99 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 7.725s, 5.31 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.574s, 5.02 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.181s, 3.46 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 9.684s, 5.37 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.339s, 4.38 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 10.394s, 5.58 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 9.098s, 5.28 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 4.967s, 4.63 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 9.617s, 5.41 tok/s)
   │
   ├─ max_tokens = 80
   │  Params: n_ctx=256, threads=2, max_tokens=80
-  │  Carga: 1.09s | RAM carga: 472.4 MB | RAM pico: 617.5 MB
-  │  Promedios: 1.78 tok/s | 3.801s total | 2.351s 1er token | CPU 215.2%
+  │  Carga: 1.0s | RAM carga: 349.3 MB | RAM pico: 618.4 MB
+  │  Promedios: 4.87 tok/s | 7.471s total | 1.357s 1er token | CPU 220.4%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 4.26s, 1.17 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 8.981s, 4.34 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 3.342s, 2.39 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 7.947s, 5.16 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.631s, 4.98 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.164s, 3.48 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 9.737s, 5.34 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.426s, 4.29 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 10.441s, 5.56 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 9.015s, 5.32 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 4.844s, 4.75 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 9.525s, 5.46 tok/s)
   │
   ├─ max_tokens = 120
   │  Params: n_ctx=256, threads=2, max_tokens=120
-  │  Carga: 1.11s | RAM carga: 299.2 MB | RAM pico: 617.4 MB
-  │  Promedios: 1.88 tok/s | 3.76s total | 2.395s 1er token | CPU 214.4%
+  │  Carga: 1.0s | RAM carga: 337.0 MB | RAM pico: 618.4 MB
+  │  Promedios: 4.92 tok/s | 7.391s total | 1.336s 1er token | CPU 221.3%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 4.473s, 1.12 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 8.74s, 4.46 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 3.047s, 2.63 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 7.715s, 5.31 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.381s, 5.17 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.122s, 3.52 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 9.521s, 5.46 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.287s, 4.43 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 10.48s, 5.53 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 9.048s, 5.3 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 4.927s, 4.67 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 9.687s, 5.37 tok/s)
   │
   └─────────────────────────────────────
 
@@ -110,87 +302,385 @@ Parámetros fijos: {'n_ctx': 256, 'n_threads': 2}
   │
   ├─ max_tokens = 10
   │  Params: n_ctx=256, threads=2, max_tokens=10
-  │  Carga: 15.13s | RAM carga: 756.8 MB | RAM pico: 763.5 MB
-  │  Promedios: 1.41 tok/s | 8.114s total | 5.05s 1er token | CPU 220.4%
+  │  Carga: 15.06s | RAM carga: 757.6 MB | RAM pico: 764.5 MB
+  │  Promedios: 2.01 tok/s | 5.102s total | 3.06s 1er token | CPU 274.8%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de"
-  │       (10 tok, 10.954s, 0.91 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la"
+  │       (10 tok, 8.025s, 1.25 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asi"
-  │       (10 tok, 5.274s, 1.9 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames ""
+  │       (10 tok, 4.554s, 2.2 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto"
+  │       (10 tok, 4.649s, 2.15 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la"
+  │       (10 tok, 4.869s, 2.05 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera,"
+  │       (10 tok, 4.715s, 2.12 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una"
+  │       (10 tok, 4.695s, 2.13 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es"
+  │       (10 tok, 4.419s, 2.26 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como ""
+  │       (10 tok, 5.05s, 1.98 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la sal"
+  │       (10 tok, 5.142s, 1.94 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de"
+  │       (10 tok, 4.903s, 2.04 tok/s)
   │
   ├─ max_tokens = 20
   │  Params: n_ctx=256, threads=2, max_tokens=20
-  │  Carga: 0.31s | RAM carga: 758.1 MB | RAM pico: 763.4 MB
-  │  Promedios: 1.96 tok/s | 10.9s total | 5.359s 1er token | CPU 211.1%
+  │  Carga: 0.3s | RAM carga: 213.2 MB | RAM pico: 764.5 MB
+  │  Promedios: 2.63 tok/s | 7.381s total | 3.151s 1er token | CPU 252.4%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A"
-  │       (20 tok, 13.62s, 1.47 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:"
+  │       (20 tok, 10.819s, 1.85 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español"
-  │       (20 tok, 8.18s, 2.44 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve"
+  │       (20 tok, 7.059s, 2.83 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.458s, 2.2 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+P"
+  │       (20 tok, 7.436s, 2.69 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o"
+  │       (20 tok, 7.148s, 2.8 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto"
+  │       (20 tok, 7.134s, 2.8 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight)"
+  │       (20 tok, 6.642s, 3.01 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por"
+  │       (20 tok, 7.418s, 2.7 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar"
+  │       (20 tok, 7.429s, 2.69 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En"
+  │       (20 tok, 7.263s, 2.75 tok/s)
   │
   ├─ max_tokens = 40
   │  Params: n_ctx=256, threads=2, max_tokens=40
-  │  Carga: 0.3s | RAM carga: 229.1 MB | RAM pico: 763.3 MB
-  │  Promedios: 2.01 tok/s | 13.834s total | 5.457s 1er token | CPU 197.6%
+  │  Carga: 0.29s | RAM carga: 229.7 MB | RAM pico: 764.5 MB
+  │  Promedios: 3.17 tok/s | 11.341s total | 3.175s 1er token | CPU 234.8%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 16.451s, 1.52 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora"
+  │       (40 tok, 15.492s, 2.58 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 11.216s, 2.5 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres an"
+  │       (40 tok, 11.719s, 3.41 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.567s, 2.16 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino."
+  │       (40 tok, 11.846s, 3.38 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te d"
+  │       (40 tok, 11.798s, 3.39 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?"
+  │       (40 tok, 11.68s, 3.42 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.553s, 3.25 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad"
+  │       (40 tok, 11.897s, 3.36 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay"
+  │       (40 tok, 12.064s, 3.32 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me enc"
+  │       (40 tok, 11.79s, 3.39 tok/s)
   │
   ├─ max_tokens = 60
   │  Params: n_ctx=256, threads=2, max_tokens=60
-  │  Carga: 0.3s | RAM carga: 183.6 MB | RAM pico: 763.5 MB
-  │  Promedios: 2.06 tok/s | 13.248s total | 5.028s 1er token | CPU 204.0%
+  │  Carga: 0.29s | RAM carga: 221.5 MB | RAM pico: 764.4 MB
+  │  Promedios: 3.32 tok/s | 14.527s total | 3.175s 1er token | CPU 228.5%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 15.209s, 1.64 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 16.767s, 2.68 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 11.288s, 2.48 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palab"
+  │       (60 tok, 16.295s, 3.68 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.59s, 2.15 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte."
+  │       (60 tok, 16.576s, 3.62 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 13.705s, 3.43 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para"
+  │       (60 tok, 16.474s, 3.64 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.44s, 3.28 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes cientí"
+  │       (60 tok, 16.812s, 3.57 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en"
+  │       (60 tok, 16.958s, 3.54 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal"
+  │       (60 tok, 16.654s, 3.6 tok/s)
   │
   ├─ max_tokens = 80
   │  Params: n_ctx=256, threads=2, max_tokens=80
-  │  Carga: 0.34s | RAM carga: 732.3 MB | RAM pico: 763.4 MB
-  │  Promedios: 2.1 tok/s | 13.191s total | 5.45s 1er token | CPU 205.9%
+  │  Carga: 0.31s | RAM carga: 758.7 MB | RAM pico: 764.4 MB
+  │  Promedios: 3.39 tok/s | 16.95s total | 3.176s 1er token | CPU 225.7%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 15.628s, 1.6 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 16.929s, 2.66 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 10.754s, 2.6 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien perten"
+  │       (80 tok, 20.91s, 3.83 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.6s, 2.14 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré"
+  │       (80 tok, 21.316s, 3.75 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 13.8s, 3.41 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente"
+  │       (80 tok, 21.151s, 3.78 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.565s, 3.24 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 18.774s, 3.62 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono m"
+  │       (80 tok, 21.217s, 3.77 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 20.24s, 3.71 tok/s)
   │
   ├─ max_tokens = 120
   │  Params: n_ctx=256, threads=2, max_tokens=120
-  │  Carga: 0.32s | RAM carga: 758.1 MB | RAM pico: 763.4 MB
-  │  Promedios: 1.99 tok/s | 13.936s total | 5.507s 1er token | CPU 197.3%
+  │  Carga: 0.29s | RAM carga: 225.7 MB | RAM pico: 764.7 MB
+  │  Promedios: 3.46 tok/s | 20.676s total | 3.207s 1er token | CPU 224.4%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 16.499s, 1.52 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 17.009s, 2.65 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 11.373s, 2.46 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien pertenece y su relación con otros miembros del grupo. En el caso de "Eres Ana", su nombre indica que ella es una mujer, mientras que su apodo "an" significa"
+  │       (120 tok, 30.527s, 3.93 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.55s, 2.16 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré tu mejor amigo.
+
+Ahora, si estás listo para ir a la cocinita, te recomendamos que te lleves un poco de tiempo para prepararte."
+  │       (120 tok, 30.642s, 3.92 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 13.423s, 3.5 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente automatizables.
+
+Narrador: ¿Por qué necesitan ayuda de chiste?
+
+Robot: En general, los chiste se utilizan en áreas"
+  │       (120 tok, 30.326s, 3.96 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.496s, 3.26 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 18.643s, 3.65 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono móvil, puedes intentar llamar a la oficina del departamento de comunicaciones de tu empresa o al servicio de emergencias. Si no hay ningún teléfono"
+  │       (120 tok, 30.856s, 3.89 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 20.287s, 3.7 tok/s)
   │
   └─────────────────────────────────────
 
@@ -198,87 +688,279 @@ Parámetros fijos: {'n_ctx': 256, 'n_threads': 2}
   │
   ├─ max_tokens = 10
   │  Params: n_ctx=256, threads=2, max_tokens=10
-  │  Carga: 40.42s | RAM carga: 1873.8 MB | RAM pico: 1911.9 MB
-  │  Promedios: 0.64 tok/s | 18.12s total | 10.79s 1er token | CPU 222.0%
+  │  Carga: 40.26s | RAM carga: 1899.1 MB | RAM pico: 1912.9 MB
+  │  Promedios: 0.77 tok/s | 13.368s total | 7.549s 1er token | CPU 270.0%
   │
   │  Respuestas:
-  │    P: "qué hora es"
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
   │    R: "Eres Ana, un robot asistente."
-  │       (10 tok, 24.585s, 0.41 tok/s)
+  │       (10 tok, 20.355s, 0.49 tok/s)
   │
-  │    P: "cómo te llamas"
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a"
+  │       (10 tok, 10.99s, 0.91 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
   │    R: "Eres Ana, un robot asistente."
-  │       (10 tok, 11.655s, 0.86 tok/s)
+  │       (10 tok, 12.725s, 0.79 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant."
+  │       (10 tok, 12.579s, 0.79 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 12.773s, 0.78 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente."
+  │       (10 tok, 11.715s, 0.85 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente."
+  │       (10 tok, 13.628s, 0.73 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente."
+  │       (10 tok, 12.83s, 0.78 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find"
+  │       (10 tok, 13.172s, 0.76 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente."
+  │       (10 tok, 12.915s, 0.77 tok/s)
   │
   ├─ max_tokens = 20
   │  Params: n_ctx=256, threads=2, max_tokens=20
-  │  Carga: 0.79s | RAM carga: 1878.7 MB | RAM pico: 1911.6 MB
-  │  Promedios: 0.79 tok/s | 26.938s total | 11.451s 1er token | CPU 206.3%
+  │  Carga: 0.73s | RAM carga: 1899.5 MB | RAM pico: 1912.7 MB
+  │  Promedios: 0.95 tok/s | 18.979s total | 7.73s 1er token | CPU 250.4%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español,"
-  │       (20 tok, 33.971s, 0.59 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 28.026s, 0.71 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español,"
-  │       (20 tok, 19.904s, 1.0 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 17.825s, 1.12 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 19.707s, 1.01 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.294s, 0.93 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.493s, 0.74 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 18.293s, 1.09 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 19.922s, 1.0 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 19.287s, 1.04 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.437s, 0.85 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 19.505s, 1.03 tok/s)
   │
   ├─ max_tokens = 40
   │  Params: n_ctx=256, threads=2, max_tokens=40
-  │  Carga: 0.75s | RAM carga: 1895.0 MB | RAM pico: 1911.8 MB
-  │  Promedios: 0.79 tok/s | 31.703s total | 11.619s 1er token | CPU 199.1%
+  │  Carga: 0.7s | RAM carga: 1864.1 MB | RAM pico: 1912.7 MB
+  │  Promedios: 0.93 tok/s | 19.858s total | 7.873s 1er token | CPU 248.6%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 38.385s, 0.63 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 29.555s, 0.68 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 25.022s, 0.96 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 18.388s, 1.09 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.082s, 1.0 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.374s, 0.92 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.553s, 0.74 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.62s, 1.07 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.409s, 0.98 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.648s, 1.02 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.389s, 0.85 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 20.559s, 0.97 tok/s)
   │
   ├─ max_tokens = 60
   │  Params: n_ctx=256, threads=2, max_tokens=60
-  │  Carga: 0.73s | RAM carga: 1900.3 MB | RAM pico: 1911.8 MB
-  │  Promedios: 0.81 tok/s | 31.197s total | 11.428s 1er token | CPU 203.8%
+  │  Carga: 0.73s | RAM carga: 1897.6 MB | RAM pico: 1912.8 MB
+  │  Promedios: 0.93 tok/s | 19.925s total | 7.807s 1er token | CPU 248.1%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 38.457s, 0.62 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 29.309s, 0.68 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 23.936s, 1.0 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 18.73s, 1.07 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.921s, 1.0 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.25s, 0.93 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.76s, 0.73 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.857s, 1.06 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.544s, 0.97 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.658s, 1.02 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.64s, 0.84 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 20.577s, 0.97 tok/s)
   │
   ├─ max_tokens = 80
   │  Params: n_ctx=256, threads=2, max_tokens=80
-  │  Carga: 0.73s | RAM carga: 1900.3 MB | RAM pico: 1911.8 MB
-  │  Promedios: 0.79 tok/s | 32.097s total | 11.915s 1er token | CPU 200.7%
+  │  Carga: 0.7s | RAM carga: 1862.9 MB | RAM pico: 1912.7 MB
+  │  Promedios: 0.93 tok/s | 19.819s total | 7.813s 1er token | CPU 248.3%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 39.497s, 0.61 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 29.482s, 0.68 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 24.697s, 0.97 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 18.476s, 1.08 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.13s, 0.99 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.158s, 0.93 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.464s, 0.74 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.82s, 1.06 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.337s, 0.98 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.494s, 1.02 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.29s, 0.86 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 20.536s, 0.97 tok/s)
   │
   ├─ max_tokens = 120
   │  Params: n_ctx=256, threads=2, max_tokens=120
-  │  Carga: 0.75s | RAM carga: 1895.3 MB | RAM pico: 1911.7 MB
-  │  Promedios: 0.85 tok/s | 30.387s total | 11.56s 1er token | CPU 211.2%
+  │  Carga: 0.7s | RAM carga: 1861.4 MB | RAM pico: 1912.9 MB
+  │  Promedios: 0.93 tok/s | 19.907s total | 7.797s 1er token | CPU 248.2%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 38.578s, 0.62 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 29.152s, 0.69 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 22.196s, 1.08 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 18.82s, 1.06 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.996s, 1.0 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.418s, 0.92 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.509s, 0.74 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.78s, 1.06 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.268s, 0.99 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.818s, 1.01 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.47s, 0.85 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 20.834s, 0.96 tok/s)
   │
   └─────────────────────────────────────
 
@@ -292,73 +974,233 @@ Parámetros fijos: {'max_tokens': 80, 'n_threads': 2}
   │
   ├─ n_ctx = 128
   │  Params: n_ctx=128, threads=2, max_tokens=80
-  │  Carga: 12.7s | RAM carga: 611.3 MB | RAM pico: 613.2 MB
-  │  Promedios: 2.47 tok/s | 2.904s total | 1.772s 1er token | CPU 252.4%
+  │  Carga: 12.54s | RAM carga: 615.5 MB | RAM pico: 616.3 MB
+  │  Promedios: 4.92 tok/s | 7.392s total | 1.337s 1er token | CPU 221.5%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 3.532s, 1.42 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 8.78s, 4.44 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 2.275s, 3.52 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 7.601s, 5.39 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.421s, 5.14 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.068s, 3.59 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 9.668s, 5.38 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.408s, 4.31 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 10.42s, 5.57 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 8.985s, 5.34 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 4.896s, 4.7 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 9.672s, 5.38 tok/s)
   │
   ├─ n_ctx = 192
   │  Params: n_ctx=192, threads=2, max_tokens=80
-  │  Carga: 1.04s | RAM carga: 610.2 MB | RAM pico: 613.4 MB
-  │  Promedios: 1.97 tok/s | 3.52s total | 2.091s 1er token | CPU 224.8%
+  │  Carga: 1.05s | RAM carga: 613.0 MB | RAM pico: 616.1 MB
+  │  Promedios: 4.87 tok/s | 7.47s total | 1.383s 1er token | CPU 221.2%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 4.1s, 1.22 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 9.024s, 4.32 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 2.941s, 2.72 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 7.711s, 5.32 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.518s, 5.06 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.088s, 3.56 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 9.765s, 5.33 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.416s, 4.3 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 10.47s, 5.54 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 9.104s, 5.27 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 4.96s, 4.64 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 9.644s, 5.39 tok/s)
   │
   ├─ n_ctx = 256
   │  Params: n_ctx=256, threads=2, max_tokens=80
-  │  Carga: 1.41s | RAM carga: 614.6 MB | RAM pico: 613.5 MB
-  │  Promedios: 1.27 tok/s | 5.897s total | 4.208s 1er token | CPU 152.7%
+  │  Carga: 1.01s | RAM carga: 277.1 MB | RAM pico: 616.5 MB
+  │  Promedios: 4.86 tok/s | 7.475s total | 1.377s 1er token | CPU 221.0%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 7.567s, 0.66 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 8.954s, 4.36 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 4.228s, 1.89 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 7.747s, 5.29 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.529s, 5.05 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.133s, 3.51 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 9.547s, 5.45 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.514s, 4.21 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 10.536s, 5.5 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 9.138s, 5.25 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 5.009s, 4.59 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 9.642s, 5.39 tok/s)
   │
   ├─ n_ctx = 384
   │  Params: n_ctx=384, threads=2, max_tokens=80
-  │  Carga: 1.28s | RAM carga: 604.9 MB | RAM pico: 609.5 MB
-  │  Promedios: 1.96 tok/s | 4.502s total | 2.877s 1er token | CPU 199.8%
+  │  Carga: 1.0s | RAM carga: 355.7 MB | RAM pico: 617.9 MB
+  │  Promedios: 4.86 tok/s | 7.489s total | 1.366s 1er token | CPU 221.5%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 6.453s, 0.77 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 8.858s, 4.4 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 2.55s, 3.14 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 7.721s, 5.31 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.573s, 5.02 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.13s, 3.51 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 9.822s, 5.29 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.31s, 4.41 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 10.534s, 5.51 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 9.155s, 5.24 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 5.005s, 4.6 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 9.784s, 5.31 tok/s)
   │
   ├─ n_ctx = 512
   │  Params: n_ctx=512, threads=2, max_tokens=80
-  │  Carga: 1.07s | RAM carga: 606.0 MB | RAM pico: 615.6 MB
-  │  Promedios: 1.51 tok/s | 4.259s total | 2.064s 1er token | CPU 205.0%
+  │  Carga: 1.01s | RAM carga: 332.3 MB | RAM pico: 624.0 MB
+  │  Promedios: 4.87 tok/s | 7.477s total | 1.364s 1er token | CPU 221.8%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 3.743s, 1.34 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 8.997s, 4.33 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 4.775s, 1.68 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 7.777s, 5.27 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.479s, 5.09 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.106s, 3.54 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 9.727s, 5.35 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.308s, 4.41 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 10.586s, 5.48 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 9.111s, 5.27 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 5.064s, 4.54 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 9.612s, 5.41 tok/s)
   │
   └─────────────────────────────────────
 
@@ -366,73 +1208,371 @@ Parámetros fijos: {'max_tokens': 80, 'n_threads': 2}
   │
   ├─ n_ctx = 128
   │  Params: n_ctx=128, threads=2, max_tokens=80
-  │  Carga: 16.08s | RAM carga: 753.9 MB | RAM pico: 758.0 MB
-  │  Promedios: 2.15 tok/s | 13.068s total | 5.109s 1er token | CPU 209.7%
+  │  Carga: 15.13s | RAM carga: 756.9 MB | RAM pico: 762.6 MB
+  │  Promedios: 3.38 tok/s | 15.875s total | 3.139s 1er token | CPU 227.2%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 15.824s, 1.58 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 16.117s, 2.79 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 10.312s, 2.72 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función"
+  │       (71 tok, 18.572s, 3.82 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.615s, 2.14 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú pu"
+  │       (70 tok, 18.958s, 3.69 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 13.709s, 3.43 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tare"
+  │       (72 tok, 19.132s, 3.76 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.635s, 3.22 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 18.836s, 3.61 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales."
+  │       (69 tok, 18.88s, 3.65 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un bu"
+  │       (71 tok, 19.295s, 3.68 tok/s)
   │
   ├─ n_ctx = 192
   │  Params: n_ctx=192, threads=2, max_tokens=80
-  │  Carga: 0.3s | RAM carga: 207.7 MB | RAM pico: 763.3 MB
-  │  Promedios: 1.98 tok/s | 13.677s total | 5.563s 1er token | CPU 207.5%
+  │  Carga: 0.3s | RAM carga: 190.3 MB | RAM pico: 763.2 MB
+  │  Promedios: 3.36 tok/s | 17.097s total | 3.187s 1er token | CPU 225.9%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 15.312s, 1.63 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 17.151s, 2.62 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 12.043s, 2.33 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien perten"
+  │       (80 tok, 21.23s, 3.77 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.517s, 2.18 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré"
+  │       (80 tok, 21.481s, 3.72 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 13.698s, 3.43 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente"
+  │       (80 tok, 21.348s, 3.75 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.753s, 3.18 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 18.925s, 3.59 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono m"
+  │       (80 tok, 21.507s, 3.72 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 20.356s, 3.68 tok/s)
   │
   ├─ n_ctx = 256
   │  Params: n_ctx=256, threads=2, max_tokens=80
-  │  Carga: 0.3s | RAM carga: 224.1 MB | RAM pico: 763.5 MB
-  │  Promedios: 2.12 tok/s | 12.668s total | 4.665s 1er token | CPU 219.4%
+  │  Carga: 0.3s | RAM carga: 211.8 MB | RAM pico: 763.2 MB
+  │  Promedios: 3.35 tok/s | 17.16s total | 3.203s 1er token | CPU 225.5%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 13.865s, 1.8 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 17.057s, 2.64 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 11.47s, 2.44 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien perten"
+  │       (80 tok, 21.329s, 3.75 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.545s, 2.16 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré"
+  │       (80 tok, 21.293s, 3.76 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 13.946s, 3.37 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente"
+  │       (80 tok, 21.426s, 3.73 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.621s, 3.22 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 18.923s, 3.59 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono m"
+  │       (80 tok, 21.749s, 3.68 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 20.71s, 3.62 tok/s)
   │
   ├─ n_ctx = 384
   │  Params: n_ctx=384, threads=2, max_tokens=80
-  │  Carga: 0.3s | RAM carga: 212.6 MB | RAM pico: 763.5 MB
-  │  Promedios: 2.24 tok/s | 12.349s total | 5.053s 1er token | CPU 223.3%
+  │  Carga: 0.29s | RAM carga: 240.7 MB | RAM pico: 763.2 MB
+  │  Promedios: 3.35 tok/s | 17.191s total | 3.247s 1er token | CPU 226.5%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 14.479s, 1.73 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 17.365s, 2.59 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 10.219s, 2.74 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien perten"
+  │       (80 tok, 21.175s, 3.78 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.608s, 2.14 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré"
+  │       (80 tok, 21.417s, 3.74 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 13.769s, 3.41 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente"
+  │       (80 tok, 21.331s, 3.75 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.616s, 3.22 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 19.068s, 3.57 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono m"
+  │       (80 tok, 21.906s, 3.65 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 20.656s, 3.63 tok/s)
   │
   ├─ n_ctx = 512
   │  Params: n_ctx=512, threads=2, max_tokens=80
-  │  Carga: 0.3s | RAM carga: 245.5 MB | RAM pico: 763.3 MB
-  │  Promedios: 2.33 tok/s | 11.881s total | 4.758s 1er token | CPU 231.8%
+  │  Carga: 0.3s | RAM carga: 220.0 MB | RAM pico: 768.1 MB
+  │  Promedios: 3.36 tok/s | 17.108s total | 3.218s 1er token | CPU 225.9%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 14.012s, 1.78 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 17.201s, 2.62 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 9.749s, 2.87 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien perten"
+  │       (80 tok, 21.328s, 3.75 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.638s, 2.13 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré"
+  │       (80 tok, 21.674s, 3.69 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 13.691s, 3.43 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente"
+  │       (80 tok, 21.132s, 3.79 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.703s, 3.19 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 19.024s, 3.57 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono m"
+  │       (80 tok, 21.532s, 3.72 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 20.154s, 3.72 tok/s)
   │
   └─────────────────────────────────────
 
@@ -440,73 +1580,233 @@ Parámetros fijos: {'max_tokens': 80, 'n_threads': 2}
   │
   ├─ n_ctx = 128
   │  Params: n_ctx=128, threads=2, max_tokens=80
-  │  Carga: 40.61s | RAM carga: 1849.1 MB | RAM pico: 1869.6 MB
-  │  Promedios: 0.88 tok/s | 29.168s total | 10.569s 1er token | CPU 211.0%
+  │  Carga: 14.38s | RAM carga: 1844.0 MB | RAM pico: 1877.6 MB
+  │  Promedios: 0.95 tok/s | 19.496s total | 7.621s 1er token | CPU 248.3%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 36.232s, 0.66 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 28.028s, 0.71 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 22.104s, 1.09 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 18.115s, 1.1 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.757s, 1.01 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.214s, 0.93 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.57s, 0.74 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.333s, 1.09 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.919s, 1.0 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.304s, 1.03 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.261s, 0.86 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 20.461s, 0.98 tok/s)
   │
   ├─ n_ctx = 192
   │  Params: n_ctx=192, threads=2, max_tokens=80
-  │  Carga: 0.69s | RAM carga: 1845.4 MB | RAM pico: 1889.0 MB
-  │  Promedios: 0.92 tok/s | 28.304s total | 9.93s 1er token | CPU 220.9%
+  │  Carga: 0.66s | RAM carga: 1867.0 MB | RAM pico: 1897.7 MB
+  │  Promedios: 0.93 tok/s | 19.839s total | 7.835s 1er token | CPU 248.5%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 36.038s, 0.67 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 29.335s, 0.68 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 20.57s, 1.17 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 18.445s, 1.08 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.053s, 1.0 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.621s, 0.91 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.504s, 0.74 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.539s, 1.07 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.144s, 0.99 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.645s, 1.02 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.467s, 0.85 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 20.636s, 0.97 tok/s)
   │
   ├─ n_ctx = 256
   │  Params: n_ctx=256, threads=2, max_tokens=80
-  │  Carga: 0.77s | RAM carga: 1879.8 MB | RAM pico: 1907.8 MB
-  │  Promedios: 0.04 tok/s | 705.995s total | 34.653s 1er token | CPU 23.4%
+  │  Carga: 0.7s | RAM carga: 1868.0 MB | RAM pico: 1917.1 MB
+  │  Promedios: 0.92 tok/s | 20.016s total | 7.86s 1er token | CPU 247.9%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 495.698s, 0.05 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 29.781s, 0.67 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 916.291s, 0.03 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 18.665s, 1.07 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.113s, 0.99 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.576s, 0.91 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.656s, 0.73 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.62s, 1.07 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.501s, 0.98 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.908s, 1.0 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.492s, 0.85 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 20.846s, 0.96 tok/s)
   │
   ├─ n_ctx = 384
   │  Params: n_ctx=384, threads=2, max_tokens=80
-  │  Carga: 2.63s | RAM carga: 1939.2 MB | RAM pico: 1946.0 MB
-  │  Promedios: 0.98 tok/s | 25.498s total | 9.203s 1er token | CPU 230.1%
+  │  Carga: 0.78s | RAM carga: 1918.3 MB | RAM pico: 1957.2 MB
+  │  Promedios: 0.94 tok/s | 19.719s total | 7.733s 1er token | CPU 247.8%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 30.819s, 0.78 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 29.056s, 0.69 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 20.177s, 1.19 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 18.476s, 1.08 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.783s, 1.01 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.365s, 0.92 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.459s, 0.74 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.481s, 1.08 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.106s, 0.99 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.557s, 1.02 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.199s, 0.86 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 20.705s, 0.97 tok/s)
   │
   ├─ n_ctx = 512
   │  Params: n_ctx=512, threads=2, max_tokens=80
-  │  Carga: 0.94s | RAM carga: 1969.4 MB | RAM pico: 1979.9 MB
-  │  Promedios: 0.91 tok/s | 28.961s total | 12.062s 1er token | CPU 216.4%
+  │  Carga: 0.86s | RAM carga: 1968.3 MB | RAM pico: 1995.6 MB
+  │  Promedios: 0.87 tok/s | 21.518s total | 8.405s 1er token | CPU 235.6%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 37.383s, 0.64 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 29.41s, 0.68 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Eres Ana, un robot asistente. Responde SOLO en español, maximo"
-  │       (24 tok, 20.538s, 1.17 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 18.49s, 1.08 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.86s, 1.01 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.412s, 0.92 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.421s, 0.75 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.875s, 1.06 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.403s, 0.98 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 27.562s, 0.76 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 25.599s, 0.55 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 21.146s, 0.95 tok/s)
   │
   └─────────────────────────────────────
 
@@ -520,59 +1820,187 @@ Parámetros fijos: {'max_tokens': 80, 'n_ctx': 256}
   │
   ├─ n_threads = 1
   │  Params: n_ctx=256, threads=1, max_tokens=80
-  │  Carga: 12.72s | RAM carga: 609.4 MB | RAM pico: 610.0 MB
-  │  Promedios: 1.96 tok/s | 3.498s total | 1.804s 1er token | CPU 197.8%
+  │  Carga: 12.53s | RAM carga: 614.5 MB | RAM pico: 616.1 MB
+  │  Promedios: 3.29 tok/s | 11.122s total | 1.343s 1er token | CPU 131.0%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 3.972s, 1.26 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 12.617s, 3.09 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 3.024s, 2.65 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 12.484s, 3.28 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 9.538s, 3.46 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 4.169s, 2.64 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 14.59s, 3.56 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 6.303s, 3.01 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 16.068s, 3.61 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 13.569s, 3.54 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 7.25s, 3.17 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 14.631s, 3.55 tok/s)
   │
   ├─ n_threads = 2
   │  Params: n_ctx=256, threads=2, max_tokens=80
-  │  Carga: 1.05s | RAM carga: 606.7 MB | RAM pico: 609.9 MB
-  │  Promedios: 2.47 tok/s | 2.867s total | 1.758s 1er token | CPU 255.8%
+  │  Carga: 1.01s | RAM carga: 305.2 MB | RAM pico: 616.1 MB
+  │  Promedios: 4.94 tok/s | 7.368s total | 1.315s 1er token | CPU 220.8%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 3.431s, 1.46 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 8.902s, 4.38 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 2.302s, 3.48 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 7.666s, 5.35 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.455s, 5.11 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.019s, 3.64 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 9.396s, 5.53 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.338s, 4.38 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 10.449s, 5.55 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 9.006s, 5.33 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 4.873s, 4.72 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 9.577s, 5.43 tok/s)
   │
   ├─ n_threads = 3
   │  Params: n_ctx=256, threads=3, max_tokens=80
-  │  Carga: 1.04s | RAM carga: 606.6 MB | RAM pico: 609.9 MB
-  │  Promedios: 2.28 tok/s | 3.107s total | 1.86s 1er token | CPU 269.0%
+  │  Carga: 1.02s | RAM carga: 612.6 MB | RAM pico: 616.1 MB
+  │  Promedios: 4.62 tok/s | 7.889s total | 1.355s 1er token | CPU 264.3%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 3.732s, 1.34 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 9.28s, 4.2 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 2.481s, 3.22 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 8.089s, 5.07 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 6.818s, 4.84 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 3.283s, 3.35 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 10.277s, 5.06 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 4.564s, 4.16 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 11.215s, 5.17 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 9.774s, 4.91 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 5.307s, 4.33 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 10.282s, 5.06 tok/s)
   │
   ├─ n_threads = 4
   │  Params: n_ctx=256, threads=4, max_tokens=80
-  │  Carga: 1.05s | RAM carga: 606.5 MB | RAM pico: 609.7 MB
-  │  Promedios: 1.67 tok/s | 4.031s total | 1.817s 1er token | CPU 270.8%
+  │  Carga: 1.05s | RAM carga: 612.6 MB | RAM pico: 616.0 MB
+  │  Promedios: 3.25 tok/s | 11.253s total | 1.396s 1er token | CPU 281.2%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "14:00"
-  │       (5 tok, 4.432s, 1.13 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre la hora actual en tiempo real. Mi función es responder a preguntas y realizar tareas basadas en el texto que me ha enviado."
+  │       (39 tok, 12.932s, 3.02 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Estoy llamado Eres Ana."
-  │       (8 tok, 3.63s, 2.2 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Como asistente de inteligencia artificial, mi nombre es Claude y soy creado por Anthropic. Soy diseñado para ayudar a los usuarios con información, proporcionar consejos y responder preguntas."
+  │       (41 tok, 11.772s, 3.48 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre objetos en la habitación de otra persona. Mi función es asistir y ayudarte con información general."
+  │       (33 tok, 9.827s, 3.36 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Por supuesto, estaré aquí en el momento."
+  │       (11 tok, 4.25s, 2.59 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre mi ubicación ni realizar tareas relacionadas con la búsqueda de mi ubicación. Soy un programa de IA que no tiene capacidad para interactuar con el mundo físico o realizar tareas en tiempo real."
+  │       (52 tok, 14.647s, 3.55 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "¿Quién es más rápido: un robot o una tortuga? ¡La tortuga!"
+  │       (19 tok, 6.679s, 2.84 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Lo siento, pero no puedo proporcionar información sobre el tiempo de hoy fuera del edificio. Soy un asistente de inteligencia artificial diseñado para ayudarte a responder preguntas y realizar tareas en línea, sin tener acceso a datos personales o ubicaciones específicas."
+  │       (58 tok, 15.841s, 3.66 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Como asistente de inteligencia artificial, no tengo un "creador" personal ni una ubicación específica en la universidad. Mi desarrollo se basa en el trabajo realizado por mi creadores y los recursos disponibles para desarrollarme."
+  │       (48 tok, 14.32s, 3.35 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Por supuesto, estaré aquí para ayudarte. ¿En qué puedo asistirte con la salida?"
+  │       (23 tok, 7.293s, 3.15 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Como asistente de inteligencia artificial, mi principal función es ayudarte a resolver problemas y proporcionar información. Estoy diseñado para ser útil en tareas como buscar información, responder preguntas, realizar cálculos, escribir texto, etc."
+  │       (52 tok, 14.972s, 3.47 tok/s)
   │
   └─────────────────────────────────────
 
@@ -580,59 +2008,487 @@ Parámetros fijos: {'max_tokens': 80, 'n_ctx': 256}
   │
   ├─ n_threads = 1
   │  Params: n_ctx=256, threads=1, max_tokens=80
-  │  Carga: 15.13s | RAM carga: 748.3 MB | RAM pico: 755.4 MB
-  │  Promedios: 1.8 tok/s | 14.962s total | 4.335s 1er token | CPU 157.7%
+  │  Carga: 15.07s | RAM carga: 755.1 MB | RAM pico: 762.3 MB
+  │  Promedios: 2.19 tok/s | 26.465s total | 2.958s 1er token | CPU 132.1%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 16.465s, 1.52 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 23.896s, 1.88 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 13.458s, 2.08 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien perten"
+  │       (80 tok, 33.843s, 2.36 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 7.279s, 1.65 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré"
+  │       (80 tok, 34.05s, 2.35 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 21.133s, 2.22 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente"
+  │       (80 tok, 33.856s, 2.36 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 14.396s, 2.15 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 29.705s, 2.29 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono m"
+  │       (80 tok, 34.118s, 2.34 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 32.371s, 2.32 tok/s)
   │
   ├─ n_threads = 2
   │  Params: n_ctx=256, threads=2, max_tokens=80
-  │  Carga: 0.31s | RAM carga: 749.9 MB | RAM pico: 755.3 MB
-  │  Promedios: 2.5 tok/s | 10.96s total | 4.264s 1er token | CPU 236.7%
+  │  Carga: 0.3s | RAM carga: 219.1 MB | RAM pico: 762.1 MB
+  │  Promedios: 3.4 tok/s | 16.95s total | 3.08s 1er token | CPU 224.9%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 12.666s, 1.97 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 16.456s, 2.73 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 9.254s, 3.03 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien perten"
+  │       (80 tok, 21.056s, 3.8 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.39s, 2.23 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré"
+  │       (80 tok, 21.163s, 3.78 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 13.68s, 3.44 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente"
+  │       (80 tok, 21.104s, 3.79 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 9.59s, 3.23 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 18.896s, 3.6 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono m"
+  │       (80 tok, 21.718s, 3.68 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 20.446s, 3.67 tok/s)
   │
   ├─ n_threads = 3
   │  Params: n_ctx=256, threads=3, max_tokens=80
-  │  Carga: 0.33s | RAM carga: 748.9 MB | RAM pico: 755.3 MB
-  │  Promedios: 2.2 tok/s | 12.418s total | 4.495s 1er token | CPU 259.9%
+  │  Carga: 0.3s | RAM carga: 190.3 MB | RAM pico: 762.3 MB
+  │  Promedios: 3.07 tok/s | 18.754s total | 3.208s 1er token | CPU 269.6%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 14.262s, 1.75 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 18.196s, 2.47 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 10.573s, 2.65 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien perten"
+  │       (80 tok, 23.329s, 3.43 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 5.863s, 2.05 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré"
+  │       (80 tok, 23.911s, 3.35 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 14.932s, 3.15 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente"
+  │       (80 tok, 23.366s, 3.42 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 10.479s, 2.96 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 20.757s, 3.28 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono m"
+  │       (80 tok, 24.065s, 3.32 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 22.638s, 3.31 tok/s)
   │
   ├─ n_threads = 4
   │  Params: n_ctx=256, threads=4, max_tokens=80
-  │  Carga: 0.31s | RAM carga: 749.8 MB | RAM pico: 755.2 MB
-  │  Promedios: 1.64 tok/s | 16.522s total | 4.612s 1er token | CPU 265.2%
+  │  Carga: 0.3s | RAM carga: 202.2 MB | RAM pico: 761.9 MB
+  │  Promedios: 2.16 tok/s | 26.787s total | 3.311s 1er token | CPU 282.1%
   │
   │  Respuestas:
-  │    P: "qué hora es"
-  │    R: "El horario de la noche es de 10:00 p.m. A partir de este momento."
-  │       (25 tok, 18.279s, 1.37 tok/s)
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Sí, ahora es el momento de la noche.
+
+En español:
+
+¿Qué hora es ahora?
+
+Respuesta: Hoy es la hora de la noche."
+  │       (45 tok, 23.697s, 1.9 tok/s)
   │
-  │    P: "cómo te llamas"
-  │    R: "Cómo te llamas, un robot asistente. Responde SOLO en español, maximo 5 palabras."
-  │       (28 tok, 14.765s, 1.9 tok/s)
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Sí, es posible que te llames "Eres Ana" y para lo cual sirve.
+
+En español, el nombre de una persona puede ser pronunciado como "eres ana", pero también puede ser pronunciado como "eres an". En ambos casos, la palabra significa "esposa".
+
+La función de un nombre es identificar a quien perten"
+  │       (80 tok, 33.146s, 2.41 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "En esta habitación, hay 1 objeto visible."
+  │       (12 tok, 7.554s, 1.59 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Sí, puedo llevarte a la cocinita lo antes posible.
+
+Pero no te preocupes por mi falta de habilidad en el camino.
+
+No te preocupes por mis incompetencias en el transporte.
+
+Lo que importa es que tú puedas estar seguro de que yo seré"
+  │       (80 tok, 34.567s, 2.31 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "El momento actual es un momento de espera, de esperar a que se produzca algo o alguien. No hay nada en este momento que te haga feliz ni que te diga "¡Hola!"."
+  │       (47 tok, 22.181s, 2.12 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Sí, aquí está un ejemplo de una conversación en español sobre un chiste corto relacionado con robotos:
+
+Narrador: ¿Qué es un chiste?
+
+Robot: Un chiste es un tipo de robots que se han desarrollado para ayudar a los humanos a realizar tareas que no son tan fácilmente"
+  │       (80 tok, 34.541s, 2.32 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "El tiempo hace hoy fuera del edificio es 12:00 AM (midnight) en el sistema de horas geodésicas."
+  │       (31 tok, 14.763s, 2.1 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "El robot Eres Ana, también conocido como "un robot asistente", fue desarrollado por un equipo de investigadores y científicos en la Universidad de California en Berkeley. La universidad es una de las más prestigiosas del mundo y ha proporcionado a muchos grandes científicos y inventores durante su historia."
+  │       (68 tok, 30.438s, 2.23 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Si necesitas ayuda para encontrar la salida de una situación, puedes intentar preguntar a alguien que esté en contacto con el problema. Si no hay ningún otro persona que puedas llamar, puedes buscar información en internet o en foros de redes sociales.
+
+Si tienes un teléfono m"
+  │       (80 tok, 34.454s, 2.32 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Sí, mi función principal es la de ser un robot asistente.
+
+En español:
+
+¡Hola! Me llamo Robot Asistente y me encanta servir a los humanos como un buen servicio.
+
+Mi función principal es la de servir a los humanos como un buen servicio."
+  │       (75 tok, 32.526s, 2.31 tok/s)
+  │
+  └─────────────────────────────────────
+
+  ┌─ MODELO: Phi-2 2.7B (1706.4 MB)
+  │
+  ├─ n_threads = 1
+  │  Params: n_ctx=256, threads=1, max_tokens=80
+  │  Carga: 35.35s | RAM carga: 1650.9 MB | RAM pico: 1910.4 MB
+  │  Promedios: 0.66 tok/s | 28.215s total | 7.637s 1er token | CPU 157.5%
+  │
+  │  Respuestas:
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 42.746s, 0.47 tok/s)
+  │
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 27.093s, 0.74 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 30.432s, 0.69 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 24.336s, 0.66 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 17.377s, 0.58 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 28.348s, 0.74 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 30.04s, 0.7 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 29.278s, 0.72 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 22.204s, 0.63 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 30.301s, 0.66 tok/s)
+  │
+  ├─ n_threads = 2
+  │  Params: n_ctx=256, threads=2, max_tokens=80
+  │  Carga: 0.73s | RAM carga: 1894.8 MB | RAM pico: 1910.3 MB
+  │  Promedios: 0.94 tok/s | 19.527s total | 7.698s 1er token | CPU 246.9%
+  │
+  │  Respuestas:
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 28.061s, 0.71 tok/s)
+  │
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 17.887s, 1.12 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.574s, 1.02 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 17.121s, 0.93 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 13.364s, 0.75 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 19.436s, 1.08 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.369s, 0.98 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.533s, 1.02 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 16.432s, 0.85 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 20.498s, 0.98 tok/s)
+  │
+  ├─ n_threads = 3
+  │  Params: n_ctx=256, threads=3, max_tokens=80
+  │  Carga: 0.71s | RAM carga: 1903.8 MB | RAM pico: 1910.5 MB
+  │  Promedios: 0.89 tok/s | 20.829s total | 8.029s 1er token | CPU 279.8%
+  │
+  │  Respuestas:
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 30.499s, 0.66 tok/s)
+  │
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 19.355s, 1.03 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 22.319s, 0.94 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 18.08s, 0.88 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 14.102s, 0.71 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 20.761s, 1.01 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 22.399s, 0.94 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 21.654s, 0.97 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 17.315s, 0.81 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 21.81s, 0.92 tok/s)
+  │
+  ├─ n_threads = 4
+  │  Params: n_ctx=256, threads=4, max_tokens=80
+  │  Carga: 0.71s | RAM carga: 1903.9 MB | RAM pico: 1910.4 MB
+  │  Promedios: 0.73 tok/s | 25.237s total | 7.947s 1er token | CPU 286.8%
+  │
+  │  Respuestas:
+  │    P: "¿puedes decirme qué hora es ahora mismo?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 36.04s, 0.55 tok/s)
+  │
+  │    P: "¿cómo te llamas y para qué sirves?"
+  │    R: "Hello, my name is Ana and I am a customer service representative. Please respond in Spanish."
+  │       (20 tok, 24.376s, 0.82 tok/s)
+  │
+  │    P: "¿cuántos objetos puedes ver en esta habitación?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 26.775s, 0.78 tok/s)
+  │
+  │    P: "necesito que me lleves a la cocina lo antes posible"
+  │    R: "Hello, I am Ana, a robot assistant. Please respond in Spanish."
+  │       (16 tok, 22.152s, 0.72 tok/s)
+  │
+  │    P: "¿qué hay justo delante de ti en este momento?"
+  │    R: "What is the name of this robot assistant?"
+  │       (10 tok, 16.429s, 0.61 tok/s)
+  │
+  │    P: "cuéntame un chiste corto relacionado con robots"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 25.567s, 0.82 tok/s)
+  │
+  │    P: "¿qué tiempo hace hoy fuera del edificio?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 27.371s, 0.77 tok/s)
+  │
+  │    P: "¿quién te creó y en qué universidad fue desarrollado?"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (21 tok, 26.438s, 0.79 tok/s)
+  │
+  │    P: "estoy perdido y necesito ayuda para encontrar la salida"
+  │    R: "Hello, I am lost and need help to find the exit."
+  │       (14 tok, 20.653s, 0.68 tok/s)
+  │
+  │    P: "explícame brevemente cuál es tu función principal"
+  │    R: "Eres Ana, un robot asistente. Responde SOLO en español."
+  │       (20 tok, 26.568s, 0.75 tok/s)
   │
   └─────────────────────────────────────
 
@@ -641,26 +2497,26 @@ TABLA RESUMEN: max_tokens
 ────────────────────────────────────────────────────────────────────────────────
 Modelo               Valor    Tok/s    Total(s)   1erTok(s)  RAM(MB)  CPU%     Carga(s)
 ---------------------------------------------------------------------------------------
-Qwen-0.5B            10       1.93     3.708      2.347      613.9    214.4    12.87   
-Qwen-0.5B            20       1.83     3.944      2.378      617.4    206.6    1.15    
-Qwen-0.5B            40       2.04     3.519      2.127      617.4    221.0    1.06    
-Qwen-0.5B            60       2.06     3.527      2.31       617.5    222.1    1.13    
-Qwen-0.5B            80       1.78     3.801      2.351      617.5    215.2    1.09    
-Qwen-0.5B            120      1.88     3.76       2.395      617.4    214.4    1.11    
+Qwen-0.5B            10       3.62     2.815      1.363      614.9    251.1    12.65   
+Qwen-0.5B            20       4.46     4.273      1.345      618.3    232.2    1.02    
+Qwen-0.5B            40       4.87     6.528      1.35       618.3    220.7    1.06    
+Qwen-0.5B            60       4.87     7.465      1.362      618.4    219.0    1.0     
+Qwen-0.5B            80       4.87     7.471      1.357      618.4    220.4    1.0     
+Qwen-0.5B            120      4.92     7.391      1.336      618.4    221.3    1.0     
 
-TinyLlama-1.1B       10       1.41     8.114      5.05       763.5    220.4    15.13   
-TinyLlama-1.1B       20       1.96     10.9       5.359      763.4    211.1    0.31    
-TinyLlama-1.1B       40       2.01     13.834     5.457      763.3    197.6    0.3     
-TinyLlama-1.1B       60       2.06     13.248     5.028      763.5    204.0    0.3     
-TinyLlama-1.1B       80       2.1      13.191     5.45       763.4    205.9    0.34    
-TinyLlama-1.1B       120      1.99     13.936     5.507      763.4    197.3    0.32    
+TinyLlama-1.1B       10       2.01     5.102      3.06       764.5    274.8    15.06   
+TinyLlama-1.1B       20       2.63     7.381      3.151      764.5    252.4    0.3     
+TinyLlama-1.1B       40       3.17     11.341     3.175      764.5    234.8    0.29    
+TinyLlama-1.1B       60       3.32     14.527     3.175      764.4    228.5    0.29    
+TinyLlama-1.1B       80       3.39     16.95      3.176      764.4    225.7    0.31    
+TinyLlama-1.1B       120      3.46     20.676     3.207      764.7    224.4    0.29    
 
-Phi-2-2.7B           10       0.64     18.12      10.79      1911.9   222.0    40.42   
-Phi-2-2.7B           20       0.79     26.938     11.451     1911.6   206.3    0.79    
-Phi-2-2.7B           40       0.79     31.703     11.619     1911.8   199.1    0.75    
-Phi-2-2.7B           60       0.81     31.197     11.428     1911.8   203.8    0.73    
-Phi-2-2.7B           80       0.79     32.097     11.915     1911.8   200.7    0.73    
-Phi-2-2.7B           120      0.85     30.387     11.56      1911.7   211.2    0.75    
+Phi-2-2.7B           10       0.77     13.368     7.549      1912.9   270.0    40.26   
+Phi-2-2.7B           20       0.95     18.979     7.73       1912.7   250.4    0.73    
+Phi-2-2.7B           40       0.93     19.858     7.873      1912.7   248.6    0.7     
+Phi-2-2.7B           60       0.93     19.925     7.807      1912.8   248.1    0.73    
+Phi-2-2.7B           80       0.93     19.819     7.813      1912.7   248.3    0.7     
+Phi-2-2.7B           120      0.93     19.907     7.797      1912.9   248.2    0.7     
 
 
 ────────────────────────────────────────────────────────────────────────────────
@@ -668,23 +2524,23 @@ TABLA RESUMEN: n_ctx
 ────────────────────────────────────────────────────────────────────────────────
 Modelo               Valor    Tok/s    Total(s)   1erTok(s)  RAM(MB)  CPU%     Carga(s)
 ---------------------------------------------------------------------------------------
-Qwen-0.5B            128      2.47     2.904      1.772      613.2    252.4    12.7    
-Qwen-0.5B            192      1.97     3.52       2.091      613.4    224.8    1.04    
-Qwen-0.5B            256      1.27     5.897      4.208      613.5    152.7    1.41    
-Qwen-0.5B            384      1.96     4.502      2.877      609.5    199.8    1.28    
-Qwen-0.5B            512      1.51     4.259      2.064      615.6    205.0    1.07    
+Qwen-0.5B            128      4.92     7.392      1.337      616.3    221.5    12.54   
+Qwen-0.5B            192      4.87     7.47       1.383      616.1    221.2    1.05    
+Qwen-0.5B            256      4.86     7.475      1.377      616.5    221.0    1.01    
+Qwen-0.5B            384      4.86     7.489      1.366      617.9    221.5    1.0     
+Qwen-0.5B            512      4.87     7.477      1.364      624.0    221.8    1.01    
 
-TinyLlama-1.1B       128      2.15     13.068     5.109      758.0    209.7    16.08   
-TinyLlama-1.1B       192      1.98     13.677     5.563      763.3    207.5    0.3     
-TinyLlama-1.1B       256      2.12     12.668     4.665      763.5    219.4    0.3     
-TinyLlama-1.1B       384      2.24     12.349     5.053      763.5    223.3    0.3     
-TinyLlama-1.1B       512      2.33     11.881     4.758      763.3    231.8    0.3     
+TinyLlama-1.1B       128      3.38     15.875     3.139      762.6    227.2    15.13   
+TinyLlama-1.1B       192      3.36     17.097     3.187      763.2    225.9    0.3     
+TinyLlama-1.1B       256      3.35     17.16      3.203      763.2    225.5    0.3     
+TinyLlama-1.1B       384      3.35     17.191     3.247      763.2    226.5    0.29    
+TinyLlama-1.1B       512      3.36     17.108     3.218      768.1    225.9    0.3     
 
-Phi-2-2.7B           128      0.88     29.168     10.569     1869.6   211.0    40.61   
-Phi-2-2.7B           192      0.92     28.304     9.93       1889.0   220.9    0.69    
-Phi-2-2.7B           256      0.04     705.995    34.653     1907.8   23.4     0.77    
-Phi-2-2.7B           384      0.98     25.498     9.203      1946.0   230.1    2.63    
-Phi-2-2.7B           512      0.91     28.961     12.062     1979.9   216.4    0.94    
+Phi-2-2.7B           128      0.95     19.496     7.621      1877.6   248.3    14.38   
+Phi-2-2.7B           192      0.93     19.839     7.835      1897.7   248.5    0.66    
+Phi-2-2.7B           256      0.92     20.016     7.86       1917.1   247.9    0.7     
+Phi-2-2.7B           384      0.94     19.719     7.733      1957.2   247.8    0.78    
+Phi-2-2.7B           512      0.87     21.518     8.405      1995.6   235.6    0.86    
 
 
 ────────────────────────────────────────────────────────────────────────────────
@@ -692,15 +2548,20 @@ TABLA RESUMEN: n_threads
 ────────────────────────────────────────────────────────────────────────────────
 Modelo               Valor    Tok/s    Total(s)   1erTok(s)  RAM(MB)  CPU%     Carga(s)
 ---------------------------------------------------------------------------------------
-Qwen-0.5B            1        1.96     3.498      1.804      610.0    197.8    12.72   
-Qwen-0.5B            2        2.47     2.867      1.758      609.9    255.8    1.05    
-Qwen-0.5B            3        2.28     3.107      1.86       609.9    269.0    1.04    
-Qwen-0.5B            4        1.67     4.031      1.817      609.7    270.8    1.05    
+Qwen-0.5B            1        3.29     11.122     1.343      616.1    131.0    12.53   
+Qwen-0.5B            2        4.94     7.368      1.315      616.1    220.8    1.01    
+Qwen-0.5B            3        4.62     7.889      1.355      616.1    264.3    1.02    
+Qwen-0.5B            4        3.25     11.253     1.396      616.0    281.2    1.05    
 
-TinyLlama-1.1B       1        1.8      14.962     4.335      755.4    157.7    15.13   
-TinyLlama-1.1B       2        2.5      10.96      4.264      755.3    236.7    0.31    
-TinyLlama-1.1B       3        2.2      12.418     4.495      755.3    259.9    0.33    
-TinyLlama-1.1B       4        1.64     16.522     4.612      755.2    265.2    0.31    
+TinyLlama-1.1B       1        2.19     26.465     2.958      762.3    132.1    15.07   
+TinyLlama-1.1B       2        3.4      16.95      3.08       762.1    224.9    0.3     
+TinyLlama-1.1B       3        3.07     18.754     3.208      762.3    269.6    0.3     
+TinyLlama-1.1B       4        2.16     26.787     3.311      761.9    282.1    0.3     
+
+Phi-2-2.7B           1        0.66     28.215     7.637      1910.4   157.5    35.35   
+Phi-2-2.7B           2        0.94     19.527     7.698      1910.3   246.9    0.73    
+Phi-2-2.7B           3        0.89     20.829     8.029      1910.5   279.8    0.71    
+Phi-2-2.7B           4        0.73     25.237     7.947      1910.4   286.8    0.71    
 
 
 ================================================================================
@@ -711,9 +2572,9 @@ Combinaciones analizadas (tiempos estimados de cada etapa):
 
 Combinación                         STT(s)   LLM(s)   TTS(s)   Total(s)  RAM tot 
 ---------------------------------------------------------------------------------
-faster-whisper + Qwen-0.5B + piper  1.50     3.80     0.50     5.80      878     
-faster-whisper + TinyLlama-1.1B + piper 1.50     13.19    0.50     15.19     1023    
-faster-whisper + Phi-2-2.7B + piper 1.50     32.10    0.50     34.10     2172    
+faster-whisper + Qwen-0.5B + piper  1.50     7.47     0.50     9.47      878     
+faster-whisper + TinyLlama-1.1B + piper 1.50     16.95    0.50     18.95     1024    
+faster-whisper + Phi-2-2.7B + piper 1.50     19.82    0.50     21.82     2173    
 
 NOTA: Los tiempos STT y TTS son promedios de los benchmarks individuales.
       El tiempo LLM corresponde a max_tokens=80, n_ctx=256, n_threads=2.
@@ -724,15 +2585,16 @@ NOTA: Los tiempos STT y TTS son promedios de los benchmarks individuales.
 OBSERVACIONES AUTOMÁTICAS
 ================================================================================
 
-  - Modelo más rápido (tok/s): TinyLlama-1.1B (2.1 tok/s)
-  - Menor latencia primer token: Qwen-0.5B (2.351s)
+  - Modelo más rápido (tok/s): Qwen-0.5B (4.87 tok/s)
+  - Menor latencia primer token: Qwen-0.5B (1.357s)
 
   Escalabilidad con hilos:
-    Qwen-0.5B: 1.96 → 1.67 tok/s (×0.85 con 4 hilos vs 1)
-    TinyLlama-1.1B: 1.8 → 1.64 tok/s (×0.91 con 4 hilos vs 1)
+    Qwen-0.5B: 3.29 → 3.25 tok/s (×0.99 con 4 hilos vs 1)
+    TinyLlama-1.1B: 2.19 → 2.16 tok/s (×0.99 con 4 hilos vs 1)
+    Phi-2-2.7B: 0.66 → 0.73 tok/s (×1.11 con 4 hilos vs 1)
 
-  - Pipeline más rápido: faster-whisper + Qwen-0.5B + piper (5.8s total)
+  - Pipeline más rápido: faster-whisper + Qwen-0.5B + piper (9.5s total)
 
 ────────────────────────────────────────────────────────────────────────────────
 Fin del informe
-Generado: 2026-04-10T19:11:45.119252
+Generado: 2026-04-11T20:36:22.600812
