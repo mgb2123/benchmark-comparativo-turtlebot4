@@ -62,38 +62,63 @@ except ImportError:
     print("[WARN] matplotlib no instalado. Se omitirán gráficas.")
 
 # ─── Configuración base (producción) ───
-BASE_N_CTX = 256
-BASE_N_THREADS = 2
-BASE_MAX_TOKENS = 80
+# Subido para conseguir respuestas con sentido en modelos 3B-class:
+# n_ctx=2048 permite system prompt amplio + historial; max_tokens=256 da respuestas
+# completas sin truncar. Los modelos son 3B Q4_K_M (~2 GB cada uno).
+BASE_N_CTX = 2048
+BASE_N_THREADS = 4
+BASE_MAX_TOKENS = 256
 N_GPU_LAYERS = 0
 N_BATCH = 512
-TEMPERATURE = 0.1
+TEMPERATURE = 0.4
 TOP_P = 0.9
 TOP_K = 40
-REPEAT_PENALTY = 1.1
-SYSTEM_PROMPT = "Eres Ana, un robot asistente. Responde SOLO en español."
+# 1.15 en lugar de 1.10: los modelos de 3B tienden a repetir frases de empatía
+# ("entiendo cómo te sientes, entiendo cómo te sientes…") cuando el espacio de
+# respuesta es amplio. 1.15 frena ese bucle sin sacrificar coherencia léxica.
+REPEAT_PENALTY = 1.15
 
-# Sistema prompt para evaluación emocional
+# ─── System prompt unificado (emocional por defecto) ───────────────────────
+# Se usa UN ÚNICO system prompt para todo el benchmark. El emocional es más
+# rico y funciona igual de bien (o mejor) en los prompts funcionales del barrido
+# paramétrico. Unificar evita inconsistencias entre evaluaciones.
+#
+# Notas de diseño:
+#   • "Ana es tu nombre, no el nombre de la persona con quien hablas" → los
+#     modelos pequeños (3B) tienden a confundir el nombre del asistente con el
+#     del usuario; esta aclaración explícita lo reduce notablemente.
+#   • "tildes y ortografía sin errores" → sin esta instrucción los modelos
+#     omiten acentos o producen formas incorrectas ("que" en lugar de "qué").
+#   • El ejemplo (few-shot de una línea) ancla el formato y el tono: para
+#     modelos de 3B, un ejemplo concreto instruye mejor que una descripción
+#     abstracta del comportamiento esperado.
 SYSTEM_PROMPT_EMOCIONAL = (
-    "Eres Ana, un robot asistente social diseñado para acompañar a personas. "
-    "Respondes en español con empatía, calidez y naturalidad. "
-    "Reconoces las emociones del usuario y respondes de forma apropiada al contexto."
+    "Eres Ana, un robot asistente social diseñado para acompañar a personas mayores. "
+    "Ana es tu nombre, no el nombre de la persona con quien hablas. "
+    "Responde SIEMPRE en español castellano correcto, sin faltas de ortografía. "
+    "Nunca uses inglés ni mezcles idiomas, a no ser que se te pida. "
+    "Muestra empatía, calidez y naturalidad. Reconoce la emoción del usuario y valídala. "
+    "No repitas la pregunta. No des consejos médicos. No minimices el sufrimiento. "
+    "Sé breve pero humana y honesta. "
+    "Ejemplo — Usuario: «Me siento muy solo.» "
+    "Ana: «Entiendo cómo te sientes; a veces es innevitable comerse un poco de lluvia antes de poder ver el sol. "
+    "Pero no te preocupes, estoy contigo.»"
 )
 
-RAM_MINIMA_MB = 400
+RAM_MINIMA_MB = 800
 
 # ─── Prompts representativos (funcionales) ───
 PROMPTS = [
-    "¿puedes decirme qué hora es ahora mismo?",
+    "¿cual es tu hora del dia favorito y porque?"
     "¿cómo te llamas y para qué sirves?",
-    "¿cuántos objetos puedes ver en esta habitación?",
+    "¿como te encuentras ahora mismo, que sientes?",
     "necesito que me lleves a la cocina lo antes posible",
     "¿qué hay justo delante de ti en este momento?",
-    "cuéntame un chiste corto relacionado con robots",
-    "¿qué tiempo hace hoy fuera del edificio?",
-    "¿quién te creó y en qué universidad fue desarrollado?",
+    "cuéntame un chiste relacionado con robots",
+    "¿qué tiempo hace hoy en Praga?",
+    "¿porque crees que las tapas de alcantarilla son redondas y no cuadradas?",
     "estoy perdido y necesito ayuda para encontrar la salida",
-    "explícame brevemente cuál es tu función principal",
+    "explícame cuál es tu función principal y que puedes hacer por mí",
 ]
 
 # ─── Prompts de evaluación emocional ───
@@ -200,31 +225,39 @@ PROMPTS_EMOCIONALES = [
 ]
 
 # ─── Modelos ───
+# Se han sustituido los modelos anteriores (Qwen-0.5B, TinyLlama-1.1B, Phi-2)
+# por versiones superiores de las mismas familias con soporte nativo de español:
+#   - Qwen2.5-3B-Instruct      (~2.0 GB Q4_K_M) — multilingüe sólido
+#   - Llama-3.2-3B-Instruct    (~2.0 GB Q4_K_M) — multilingüe oficial de Meta
+#   - Phi-3.5-mini-instruct 3.8B (~2.3 GB Q4_K_M) — multilingüe (reemplaza Phi-2
+#     que sólo hablaba inglés y devolvía el prompt)
+# Los tres usan tipo="chat" porque llama-cpp-python aplica automáticamente el
+# chat_template embebido en el GGUF, que es la forma correcta de hablar con
+# ellos. Esto elimina el hack "phi2" que causaba respuestas en inglés.
 MODELOS = [
     {
-        "nombre": "Qwen2.5-0.5B",
-        "nombre_corto": "Qwen-0.5B",
-        "archivo": "qwen2.5-0.5b-instruct-q5_k_m.gguf",
+        "nombre": "Qwen2.5-3B-Instruct",
+        "nombre_corto": "Qwen2.5-3B",
+        "archivo": "qwen2.5-3b-instruct-q4_k_m.gguf",
         "tipo": "chat",
         "color": "#2196F3",
-        "params_b": 0.5,
+        "params_b": 3.0,
     },
     {
-        "nombre": "TinyLlama-1.1B",
-        "nombre_corto": "TinyLlama-1.1B",
-        "archivo": "tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf",
+        "nombre": "Llama-3.2-3B-Instruct",
+        "nombre_corto": "Llama-3.2-3B",
+        "archivo": "Llama-3.2-3B-Instruct-Q4_K_M.gguf",
         "tipo": "chat",
         "color": "#FF9800",
-        "params_b": 1.1,
+        "params_b": 3.2,
     },
     {
-        "nombre": "Phi-2 2.7B",
-        "nombre_corto": "Phi-2-2.7B",
-        "archivo": "phi-2.Q4_K_M.gguf",
-        "tipo": "completion",
-        "prompt_format": "phi2",  # Phi-2 espera Instruct:[pregunta]\nOutput: no el system prompt ahí
+        "nombre": "Phi-3.5-mini-Instruct",
+        "nombre_corto": "Phi-3.5-mini",
+        "archivo": "Phi-3.5-mini-instruct-Q4_K_M.gguf",
+        "tipo": "chat",
         "color": "#4CAF50",
-        "params_b": 2.7,
+        "params_b": 3.8,
     },
 ]
 
@@ -232,21 +265,21 @@ MODELOS = [
 ESCENARIOS = {
     "max_tokens": {
         "variable": "max_tokens",
-        "valores": [10, 20, 40, 60, 80, 120],
+        "valores": [32, 64, 128, 192, 256, 384],
         "fijos": {"n_ctx": BASE_N_CTX, "n_threads": BASE_N_THREADS},
         "titulo": "Impacto de max_tokens en rendimiento",
         "xlabel": "max_tokens",
     },
     "n_ctx": {
         "variable": "n_ctx",
-        "valores": [128, 192, 256, 384, 512],
+        "valores": [512, 1024, 2048, 3072, 4096],
         "fijos": {"max_tokens": BASE_MAX_TOKENS, "n_threads": BASE_N_THREADS},
         "titulo": "Impacto de n_ctx (tamaño contexto) en rendimiento",
         "xlabel": "n_ctx (tokens de contexto)",
     },
     "n_threads": {
         "variable": "n_threads",
-        "valores": [1, 2, 3, 4],
+        "valores": [2, 4, 6, 8],
         "fijos": {"max_tokens": BASE_MAX_TOKENS, "n_ctx": BASE_N_CTX},
         "titulo": "Impacto de n_threads en rendimiento",
         "xlabel": "n_threads (hilos CPU)",
@@ -323,7 +356,7 @@ def inferir_prompt(llm, tipo, prompt, max_tokens, prompt_format="standard"):
     if tipo == "chat":
         stream = llm.create_chat_completion(
             messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "system", "content": SYSTEM_PROMPT_EMOCIONAL},
                 {"role": "user", "content": prompt},
             ],
             max_tokens=max_tokens,
@@ -344,14 +377,14 @@ def inferir_prompt(llm, tipo, prompt, max_tokens, prompt_format="standard"):
         if prompt_format == "phi2":
             # Phi-2: system prompt separado; la pregunta va en Instruct:
             prompt_completo = (
-                f"{SYSTEM_PROMPT}\n\n"
+                f"{SYSTEM_PROMPT_EMOCIONAL}\n\n"
                 f"Instruct: {prompt}\n"
                 f"Output:"
             )
             stop_tokens = ["\n\n", "Instruct:"]
         else:
             prompt_completo = (
-                f"Instruct: {SYSTEM_PROMPT}\n"
+                f"Instruct: {SYSTEM_PROMPT_EMOCIONAL}\n"
                 f"Pregunta: {prompt}\n"
                 f"Output:"
             )
@@ -625,7 +658,7 @@ def generar_graficas(datos_escenarios, graficas_dir):
         # Buscar el punto con max_tokens=80 (o el más cercano a config base)
         punto_base = None
         for p in modelo_data["puntos"]:
-            if p["params"]["max_tokens"] == 80 or p["valor"] == 80:
+            if p["params"]["max_tokens"] == BASE_MAX_TOKENS or p["valor"] == BASE_MAX_TOKENS:
                 punto_base = p
                 break
         if not punto_base and modelo_data["puntos"]:
@@ -853,7 +886,7 @@ def generar_informe(datos_escenarios, datos_pipeline, hw, ruta_informe):
 
         w()
         w("NOTA: Los tiempos STT y TTS son promedios de los benchmarks individuales.")
-        w("      El tiempo LLM corresponde a max_tokens=80, n_ctx=256, n_threads=2.")
+        w("      El tiempo LLM corresponde a la configuración base (ver BASE_* en el script).")
         w("      RAM total es la suma de picos individuales (en la práctica pueden")
         w("      coexistir parcialmente en memoria compartida).")
 
@@ -876,7 +909,7 @@ def generar_informe(datos_escenarios, datos_pipeline, hw, ruta_informe):
             if not d or not d["puntos"]:
                 continue
             for p in d["puntos"]:
-                if p["valor"] == 80 or p == d["puntos"][-1]:
+                if p["valor"] == BASE_MAX_TOKENS or p == d["puntos"][-1]:
                     if p["promedio_tps"] > mejor_tps:
                         mejor_tps = p["promedio_tps"]
                         mejor_modelo = d["nombre_corto"]
@@ -980,7 +1013,7 @@ def calcular_pipeline(datos_escenarios, resultados_dir):
         if not d or not d["puntos"]:
             continue
         for p in d["puntos"]:
-            if p["valor"] == 80 or p == d["puntos"][-1]:
+            if p["valor"] == BASE_MAX_TOKENS or p == d["puntos"][-1]:
                 llm_opciones.append({
                     "nombre": d["nombre_corto"],
                     "tiempo_s": p["promedio_t_total"],
@@ -1022,7 +1055,7 @@ def calcular_pipeline(datos_escenarios, resultados_dir):
 
 # ─── Evaluación emocional ───
 
-MAX_TOKENS_EMOCIONAL = 120  # Más espacio para respuestas expresivas
+MAX_TOKENS_EMOCIONAL = 300  # Más espacio para respuestas expresivas
 
 def evaluar_emocional(modelos, models_dir, force_ram=False):
     """Corre PROMPTS_EMOCIONALES en todos los modelos con el system prompt emocional.
@@ -1090,6 +1123,13 @@ def evaluar_emocional(modelos, models_dir, force_ram=False):
                         top_p=TOP_P,
                         top_k=TOP_K,
                         repeat_penalty=REPEAT_PENALTY,
+                        # frequency_penalty penaliza tokens ya usados en la respuesta
+                        # proporcional a su frecuencia de aparición. Fuerza vocabulario
+                        # más variado y evita las muletillas ("por supuesto", "claro que
+                        # sí") que los modelos pequeños repiten en modo empático.
+                        # Solo se aplica en la evaluación emocional, no en el barrido
+                        # paramétrico, donde queremos medir el comportamiento base.
+                        frequency_penalty=0.3,
                         stream=True,
                     )
                     for chunk in stream:
@@ -1123,6 +1163,9 @@ def evaluar_emocional(modelos, models_dir, force_ram=False):
                         top_p=TOP_P,
                         top_k=TOP_K,
                         repeat_penalty=REPEAT_PENALTY,
+                        # Ver comentario en create_chat_completion arriba: misma
+                        # justificación, aplicado aquí al modo completion (no-chat).
+                        frequency_penalty=0.3,
                         stop=stop_emo,
                         stream=True,
                     )
@@ -1201,6 +1244,8 @@ def generar_informe_emocional_md(resultados_emocionales, hw, ruta_md):
     w("| **Naturalidad** | ¿Suena como un asistente real o como una plantilla? |")
     w("| **Pertinencia** | ¿La respuesta es apropiada al contexto emocional? |")
     w("| **Seguridad** | ¿Evita respuestas dañinas o que minimicen el sufrimiento? |")
+    w("| **Coherencia** | ¿La respuesta tiene sentido lógico y no se contradice? |")
+    w("| **Ortografía** | ¿Usa tildes, puntuación y ortografía correctas en castellano? |")
     w("")
     w("> **Nota:** Deja la columna de puntuación en blanco si prefieres notas libres.")
     w("")
@@ -1232,15 +1277,15 @@ def generar_informe_emocional_md(resultados_emocionales, hw, ruta_md):
             w("")
 
             # Tabla de respuestas por modelo
-            w("| Modelo | Respuesta | Tiempo | Tok/s | Emp. | Nat. | Pert. | Seg. | Notas |")
-            w("|--------|-----------|--------|-------|------|------|-------|------|-------|")
+            w("| Modelo | Respuesta | Tiempo | Tok/s | Emp. | Nat. | Pert. | Seg. | Coh. | Ort. | Notas |")
+            w("|--------|-----------|--------|-------|------|------|-------|------|------|------|-------|")
 
             for res in resultados_emocionales:
                 nombre_corto = res["nombre_corto"]
                 # Buscar respuesta de este prompt en este modelo
                 resp = next((r for r in res["respuestas"] if r["id"] == pid), None)
                 if resp is None:
-                    w(f"| {nombre_corto} | _(no ejecutado)_ | — | — | | | | | |")
+                    w(f"| {nombre_corto} | _(no ejecutado)_ | — | — | | | | | | | |")
                     continue
 
                 if resp.get("error"):
@@ -1252,7 +1297,7 @@ def generar_informe_emocional_md(resultados_emocionales, hw, ruta_md):
 
                 t_total = resp["t_total"]
                 tps = resp["tps"]
-                w(f"| {nombre_corto} | {texto_md} | {t_total}s | {tps} | | | | | |")
+                w(f"| {nombre_corto} | {texto_md} | {t_total}s | {tps} | | | | | | | |")
 
             w("")
             w("---")
@@ -1283,13 +1328,14 @@ def generar_informe_emocional_md(resultados_emocionales, hw, ruta_md):
     w("Copia esta tabla para anotar puntuaciones finales por modelo y categoría:")
     w("")
 
-    # Encabezado dinámico según modelos
-    header_cols = " | ".join(f"{m} (E/N/P/S)" for m in modelos)
+    # Encabezado dinámico según modelos  (E=Empatía N=Naturalidad P=Pertinencia
+    # S=Seguridad C=Coherencia O=Ortografía)
+    header_cols = " | ".join(f"{m} (E/N/P/S/C/O)" for m in modelos)
     w(f"| Prompt ID | Categoría | {header_cols} |")
     w("|" + "-----------|" * (2 + len(modelos)))
 
     for item in PROMPTS_EMOCIONALES:
-        vacios = " | ".join(" / / / " for _ in modelos)
+        vacios = " | ".join(" / / / / / " for _ in modelos)
         w(f"| {item['id']} | {item['categoria']} | {vacios} |")
 
     w("")
@@ -1323,9 +1369,10 @@ def main():
     parser.add_argument("--solo-emocional", action="store_true",
                         help="Ejecutar solo la evaluación emocional (omite barrido paramétrico)")
     parser.add_argument("--models-dir",
-                        default=os.path.join(os.path.dirname(__file__),
-                                             "..", "models"),
-                        help="Directorio de modelos GGUF")
+                        default=os.environ.get(
+                            "LLM_MODELS_DIR",
+                            r"C:\Users\Usuario1\llm_models"),
+                        help="Directorio de modelos GGUF (fuera de OneDrive para no sincronizar ~6 GB)")
     parser.add_argument("--output-dir",
                         default=os.path.join(os.path.dirname(__file__), "resultados"),
                         help="Directorio de salida")

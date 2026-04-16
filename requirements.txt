@@ -17,3 +17,22 @@ piper-tts>=1.2.0
 # TTS - alternativa (Coqui TTS, requiere PyTorch ~800 MB)
 # css10/vits ~300 MB | xtts_v2 ~1.8 GB — verificar RAM disponible en RPi4
 TTS>=0.20.0
+
+# TTS edge v2 — motores adicionales y métricas
+# kittentts — instalar manualmente si no está en PyPI: pip install kittentts
+# kittentts
+
+# WER offline (Whisper tiny ~150 MB)
+openai-whisper>=20231117
+
+# Visualización y exportación
+matplotlib>=3.5.0
+seaborn>=0.12.0
+pandas>=1.5.0
+
+# Audio utilities (opcional, para UTMOS offline)
+librosa>=0.10.0
+
+# UTMOS MOS predictor (opcional, pesado — calcular offline)
+# pip install utmos
+# utmos
