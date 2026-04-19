@@ -6,13 +6,18 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Claude Code (configuración local)
-.claude/settings.local.json
+# Claude Code (configuración y memoria local)
+.claude/
 
 # WAVs generados por el benchmark TTS (regenerables)
 resultados/piper_*/
+resultados/coqui_*/
+resultados/kitten_*/
 resultados/graficas_stt/
 resultados/graficas_tts_v2/
 
-# Audio tests sin guión bajo (untracked, duplicados)
+# Audios concretos grabados (no subir)
+audios_wav/
+audios_wav_48k_backup/
+audios_wav.zip
 audio_tests/frase0*.wav
