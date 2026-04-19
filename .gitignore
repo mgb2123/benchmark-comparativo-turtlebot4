@@ -1,0 +1,23 @@
+# Modelos (binarios grandes — descargar con DESCARGAR_MODELOS_RPI4.md)
+models/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Claude Code (configuración y memoria local)
+.claude/
+
+# WAVs generados por el benchmark TTS (regenerables)
+resultados/piper_*/
+resultados/coqui_*/
+resultados/kitten_*/
+resultados/graficas_stt/
+resultados/graficas_tts_v2/
+
+# Audios concretos grabados (no subir)
+audios_wav/
+audios_wav_48k_backup/
+audios_wav.zip
+audio_tests/frase0*.wav
