@@ -5,6 +5,7 @@ models/
 __pycache__/
 *.pyc
 *.pyo
+.venv/
 
 # Claude Code (configuración y memoria local)
 .claude/
