@@ -35,6 +35,7 @@ import argparse
 import csv
 import datetime
 import gc
+import glob
 import json
 import math
 import os
@@ -251,11 +252,12 @@ class MonitorCPU:
         self._hilo.start()
 
     def _muestrear(self):
+        n_cpus = psutil.cpu_count(logical=True) or 1
         proc = psutil.Process()
         proc.cpu_percent()  # descarta la primera lectura (siempre 0.0)
         while self._corriendo:
             try:
-                pct = proc.cpu_percent()
+                pct = min(proc.cpu_percent() / n_cpus, 100.0)
                 if pct > 0:
                     self._muestras.append(pct)
                     if pct > self.pico_pct:
@@ -623,11 +625,30 @@ def benchmark_coqui(frases, output_dir, quick=False):
         es_multilingual = "multilingual" in model or "xtts" in model.lower()
         throttle_inicio = leer_throttling_rpi()
 
+        # XTTS-v2 requiere un WAV de referencia de hablante
+        speaker_wav_ref = None
+        if es_multilingual:
+            wavs_ref = sorted(glob.glob(os.path.join(output_dir, "**", "*.wav"), recursive=True))
+            if wavs_ref:
+                speaker_wav_ref = wavs_ref[0]
+            else:
+                print("  [WARN] XTTS-v2: no se encontró WAV de referencia en output_dir. "
+                      "Genera primero los WAVs de Piper.")
+
         for i, frase in enumerate(frases):
             wav_path = os.path.join(subdir, f"frase_{i:02d}.wav")
             tiempos = []
             cpu_picos, cpu_medios, ram_picos = [], [], []
             warmup_t = 0.0
+
+            # VITS ES no acepta ¿¡ ni dígitos — limpiar antes de sintetizar
+            texto_tts = frase
+            if not es_multilingual:
+                texto_tts = re.sub(r"[¿¡]", "", texto_tts)
+                _DIGITOS_ES = {"0": "cero", "1": "uno", "2": "dos", "3": "tres",
+                               "4": "cuatro", "5": "cinco", "6": "seis", "7": "siete",
+                               "8": "ocho", "9": "nueve"}
+                texto_tts = re.sub(r"\d", lambda m: _DIGITOS_ES.get(m.group(), ""), texto_tts)
 
             for rep in range(N_REPS):
                 mon_ram = MonitorRAM()
@@ -641,9 +662,11 @@ def benchmark_coqui(frases, output_dir, quick=False):
                     if length_scale != 1.0:
                         kwargs["length_scale"] = length_scale
                     if es_multilingual:
-                        tts.tts_to_file(text=frase, file_path=wav_path, language="es", **kwargs)
+                        if speaker_wav_ref:
+                            kwargs["speaker_wav"] = speaker_wav_ref
+                        tts.tts_to_file(text=texto_tts, file_path=wav_path, language="es", **kwargs)
                     else:
-                        tts.tts_to_file(text=frase, file_path=wav_path, **kwargs)
+                        tts.tts_to_file(text=texto_tts, file_path=wav_path, **kwargs)
                 except Exception as e:
                     mon_ram.detener()
                     mon_cpu.detener()
@@ -1005,7 +1028,19 @@ def evaluar_calidad(resultados, no_quality=False):
             if not wav_path or not os.path.exists(wav_path):
                 continue
             try:
-                out = modelo_whisper.transcribe(wav_path, language="es", fp16=False)
+                import soundfile as _sf
+                audio_np, sr = _sf.read(wav_path, dtype="float32")
+                if audio_np.ndim > 1:
+                    audio_np = audio_np.mean(axis=1)
+                import numpy as _np
+                if sr != 16000:
+                    # resample simple mediante interpolación
+                    n_out = int(len(audio_np) * 16000 / sr)
+                    audio_np = _np.interp(
+                        _np.linspace(0, len(audio_np) - 1, n_out),
+                        _np.arange(len(audio_np)), audio_np
+                    ).astype(_np.float32)
+                out = modelo_whisper.transcribe(audio_np, language="es", fp16=False)
                 hyp = out.get("text", "")
                 wer = _wer_simple(_normalizar_texto(ref), _normalizar_texto(hyp))
                 frase_data["wer"] = wer
@@ -1139,7 +1174,7 @@ def generar_graficas(resultados, graficas_dir):
         fig2, ax2 = plt.subplots(figsize=(8, 5))
         motor_labels = list(latencias_por_motor.keys())
         motor_data = [latencias_por_motor[m] for m in motor_labels]
-        bp = ax2.boxplot(motor_data, labels=motor_labels, patch_artist=True)
+        bp = ax2.boxplot(motor_data, tick_labels=motor_labels, patch_artist=True)
         for patch, motor in zip(bp["boxes"], motor_labels):
             patch.set_facecolor(colores_motor.get(motor, "#9E9E9E"))
         ax2.set_ylabel("Tiempo síntesis (s)")
@@ -1205,7 +1240,153 @@ def generar_graficas(resultados, graficas_dir):
         archivos.append(ruta3)
         print(f"  Gráfica guardada: {ruta3}")
 
+    # --- 4. Scatter RTF vs Latencia P50 (burbujas = RAM) ---
+    scatter_datos = [
+        (r["nombre"][:18], r.get("motor", "?"),
+         r["promedios"].get("rtf", 0),
+         r["promedios"].get("p50_sintesis_s") or r["promedios"].get("tiempo_sintesis_s", 0),
+         r["promedios"].get("ram_pico_mb", 100),
+         r["promedios"].get("ttfb_s"),
+         r["promedios"].get("wer_medio"))
+        for r in datos_validos if r.get("promedios")
+    ]
+    if scatter_datos:
+        fig4, ax4 = plt.subplots(figsize=(10, 7))
+        ram_vals = [d[4] for d in scatter_datos]
+        ram_max = max(ram_vals) or 1
+        for nombre_s, motor_s, rtf_s, p50_s, ram_s, ttfb_s, wer_s in scatter_datos:
+            color_s = colores_motor.get(motor_s, "#9E9E9E")
+            size_s = 80 + 900 * (ram_s / ram_max)
+            ax4.scatter(rtf_s, p50_s, s=size_s, color=color_s, alpha=0.7, edgecolors="white", linewidth=0.8, zorder=3)
+            ax4.annotate(nombre_s, (rtf_s, p50_s), textcoords="offset points",
+                         xytext=(6, 4), fontsize=6.5, rotation=15, color="black")
+            if ttfb_s is not None:
+                ax4.scatter(ttfb_s, p50_s, s=30, color=color_s, marker="D", alpha=0.9, zorder=4)
+                ax4.annotate("TTFB", (ttfb_s, p50_s), textcoords="offset points",
+                             xytext=(4, -10), fontsize=5.5, color="gray")
+        ax4.axvline(1.0, color="red", linestyle="--", linewidth=1, label="RTF=1 (tiempo real)")
+        ax4.set_xlabel("RTF ponderado (↓ mejor)")
+        ax4.set_ylabel("Latencia P50 síntesis (s) (↓ mejor)")
+        ax4.set_title("Comparativa TTS: velocidad vs latencia\n(tamaño burbuja ∝ RAM pico; ◆ = TTFB Piper)")
+        leyenda_scatter = [plt.scatter([], [], s=120, color=c, label=m, alpha=0.8)
+                           for m, c in colores_motor.items() if any(d[1] == m for d in scatter_datos)]
+        for ref_ram in [500, 1000, 1700]:
+            if ref_ram <= ram_max:
+                leyenda_scatter.append(
+                    plt.scatter([], [], s=80 + 900 * ref_ram / ram_max,
+                                color="gray", alpha=0.4, label=f"RAM {ref_ram} MB"))
+        ax4.legend(handles=leyenda_scatter, fontsize=7, loc="upper right")
+        ax4.grid(True, alpha=0.25)
+        fig4.tight_layout()
+        ruta4 = os.path.join(graficas_dir, "scatter_rtf_latencia.png")
+        fig4.savefig(ruta4, dpi=120, bbox_inches="tight")
+        plt.close(fig4)
+        archivos.append(ruta4)
+        print(f"  Gráfica guardada: {ruta4}")
+
     return archivos
+
+
+# ---------------------------------------------------------------------------
+# RECOMENDACIÓN RAZONADA
+# ---------------------------------------------------------------------------
+
+def _generar_recomendacion(resultados):
+    """Devuelve texto de recomendación razonada para voz de robot en español."""
+    validos = [r for r in resultados if r and "promedios" in r]
+    if not validos:
+        return ""
+
+    # Score compuesto: 50% RTF + 30% RAM norm + 20% WER (si disponible)
+    def _score(r):
+        p = r["promedios"]
+        rtf = p.get("rtf", 1.0)
+        ram = p.get("ram_pico_mb", 2000)
+        wer = p.get("wer_medio")
+        rtf_n = min(rtf, 1.0)
+        ram_n = min(ram / 2000, 1.0)
+        if wer is not None:
+            return 0.5 * (1 - rtf_n) + 0.3 * (1 - ram_n) + 0.2 * (1 - min(wer, 1.0))
+        return 0.6 * (1 - rtf_n) + 0.4 * (1 - ram_n)
+
+    ranking = sorted(validos, key=_score, reverse=True)
+    top3 = ranking[:3]
+
+    # Análisis por motor
+    piper_ok = any(r.get("motor") == "piper" for r in validos)
+    coqui_ok = any(r.get("motor") == "coqui" for r in validos)
+    mejor_piper = next((r for r in ranking if r.get("motor") == "piper"), None)
+    mejor_coqui = next((r for r in ranking if r.get("motor") == "coqui"), None)
+
+    lineas = [
+        "",
+        "## Recomendación para TurtleBot4 — voz española femenina con modulación emocional",
+        "",
+        "### Criterios de selección",
+        "- **Modulación emocional**: capacidad de variar prosodia (velocidad, tono, énfasis).",
+        "- **Español nativo**: modelo entrenado en español, sin traducción.",
+        "- **Voz femenina**: preferencia del proyecto.",
+        "- **Restricciones hardware**: RPi4 — 4 GB RAM compartida con ROS2 Jazzy (~1-1.5 GB).",
+        "  RAM disponible efectiva para TTS: ~1.5-2 GB.",
+        "",
+        "### Top 3 configs por score (RTF 50% + RAM 30% + WER 20%)",
+        "",
+        "| # | Config | Motor | RTF | RAM (MB) | P50 (s) | WER |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    for i, r in enumerate(top3, 1):
+        p = r["promedios"]
+        lineas.append(
+            f"| {i} | {r['nombre'][:30]} | {r.get('motor','?')} | "
+            f"{p.get('rtf','N/A')} | {p.get('ram_pico_mb','N/A')} | "
+            f"{p.get('p50_sintesis_s','N/A')} | {p.get('wer_medio','N/A')} |"
+        )
+
+    lineas += [
+        "",
+        "### Análisis por motor",
+        "",
+        "**Piper (`es_ES-davefx-medium`)**",
+        "- ✅ Velocidad excelente (RTF ~0.04-0.06), TTFB streaming <200 ms.",
+        "- ✅ RAM mínima (~350-420 MB) — compatible sin restricciones con ROS2.",
+        "- ⚠️ Voz `davefx` es **masculina**. Para voz femenina se necesita otro modelo:",
+        "  `es_ES-sharvard-medium` o `es_ES-mls_9972-low` (descargar de Hugging Face).",
+        "- ❌ Modulación emocional limitada: los parámetros `noise_scale`/`length_scale`",
+        "  permiten variaciones de ritmo y naturalidad, pero no entonación emocional.",
+        "",
+        "**Coqui VITS ES (css10)**",
+        "- ✅ Voz **femenina** (corpus CSS10 español — locutora nativa).",
+        "- ✅ Mejor prosodia natural que Piper VITS en español.",
+        "- ✅ `length_scale` permite ajustar velocidad; varianza de ruido afecta expresividad.",
+        "- ⚠️ RAM alta (~1.6 GB) — ajustada para RPi4 con ROS2 activo; monitorizar swap.",
+        "- ❌ Sin control explícito de emoción (happy/sad/angry); prosodia fija del corpus.",
+        "",
+        "**Coqui XTTS-v2** *(no ejecutado correctamente — necesita `speaker_wav`)*",
+        "- ✅ Máxima calidad y modulación emocional (clonación de voz + control de idioma).",
+        "- ✅ Voz personalizable: graba cualquier mujer 15 s → clona la voz.",
+        "- ❌ RAM ~2.5-3 GB → **inviable en RPi4 con ROS2**. Requiere PC/servidor.",
+        "- ❌ Sin `speaker_wav` configurado en el benchmark actual (ver fix pendiente).",
+        "",
+        "### Recomendación final",
+        "",
+        "**Para RPi4 con ROS2 (producción)**:",
+        "> **Piper + voz femenina española** (`es_ES-sharvard-medium` o `es_ES-mls_9972-low`).",
+        "> Es la única opción realista con las restricciones de RAM.",
+        "> La modulación emocional se implementa vía variación de `length_scale` (velocidad) y",
+        "> síntesis de frases distintas para cada emoción (p. ej. velocidad alta = urgencia).",
+        "",
+        "**Para desarrollo/evaluación en PC**:",
+        "> **Coqui XTTS-v2** con `speaker_wav` de mujer en español.",
+        "> Permite clonar una voz específica y tiene la mejor modulación emocional disponible.",
+        "> Configurar `speaker_wav` apuntando a un audio de referencia de 10-15 s.",
+        "",
+        "**Si el robot acepta ~1.5 GB para TTS**:",
+        "> **Coqui VITS CSS10** (`speed=1.0`) — voz femenina nativa, buena fluidez,",
+        "> RTF ~0.047 y sin necesidad de `speaker_wav`. Mejor opción intermedia.",
+        "",
+    ]
+
+    return "\n".join(lineas)
 
 
 # ---------------------------------------------------------------------------
@@ -1336,6 +1517,10 @@ def generar_informe_md(resultados, archivos_graficas, out_path):
         "- **Throttling:** bitmask 0x0 = sistema sano; >0 indica bajo voltaje o limitación de frecuencia.",
         "",
     ]
+
+    recomendacion = _generar_recomendacion(resultados)
+    if recomendacion:
+        lineas.append(recomendacion)
 
     with open(out_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lineas))
@@ -1555,6 +1740,10 @@ def main():
         exportar_csv(resultados, csv_path)
     except Exception as e:
         print(f"  [WARN] CSV: {e}")
+
+    rec = _generar_recomendacion(resultados)
+    if rec:
+        print(rec)
 
     print("\nBenchmark completado.")
 

@@ -2,9 +2,6 @@
 psutil>=5.9.0
 numpy>=1.21.0
 
-# LLM benchmark (ya instalado si usas el robot)
-llama-cpp-python>=0.2.0
-
 # STT - baseline (ya instalado)
 faster-whisper>=1.0.0
 

@@ -1,9 +1,9 @@
 # Informe Benchmark TTS Edge v2
 
-**Fecha:** 2026-04-16 14:25:59  
-**Plataforma:** AMD64 — Windows 10  
+**Fecha:** 2026-05-15 23:36:17  
+**Plataforma:** x86_64 — Linux 6.17.0-29-generic  
 **CPU cores:** 8  
-**RAM total:** 16080.3 MB  
+**RAM total:** 15687.3 MB  
 
 ## Metodología
 
@@ -21,34 +21,31 @@
 
 | Config | Motor | Carga(s) | RAM(MB) | RTF±std | TTFB(s)* | P50(s) | P95(s) | WER | CPU%pico | Throttle | Temp_pico(°C) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| piper_es_ES-davefx-medium_fast | piper | 2.13 | 343.8 | 0.059±0.0044 | 0.1505 | 0.1363 | 0.2842 | N/A | 543.5 | N/A | N/A |
-| piper_es_ES-davefx-medium_defa | piper | 2.13 | 397.3 | 0.063±0.0025 | 0.2045 | 0.1863 | 0.3786 | N/A | 565.2 | N/A | N/A |
-| piper_es_ES-davefx-medium_slow | piper | 2.13 | 413.9 | 0.068±0.0034 | 0.2612 | 0.2369 | 0.4967 | N/A | 565.2 | N/A | N/A |
-| piper_es_ES-davefx-medium_lowv | piper | 2.13 | 414.9 | 0.069±0.0089 | 0.2224 | 0.2048 | 0.4005 | N/A | 565.2 | N/A | N/A |
-| piper_es_ES-davefx-medium_high | piper | 2.13 | 415.7 | 0.069±0.0057 | 0.23 | 0.2125 | 0.431 | N/A | 565.2 | N/A | N/A |
-| piper_es_ES-mls_10246-low_fast | piper | 2.08 | 523.4 | 0.05±0.0118 | 0.253 | 0.257 | 0.3925 | N/A | 565.2 | N/A | N/A |
-| piper_es_ES-mls_10246-low_defa | piper | 2.08 | 683.9 | 0.045±0.0111 | 0.3245 | 0.3188 | 0.6099 | N/A | 577.4 | N/A | N/A |
-| piper_es_ES-mls_10246-low_slow | piper | 2.08 | 826.7 | 0.046±0.0131 | 0.3881 | 0.3694 | 0.7065 | N/A | 577.4 | N/A | N/A |
-| piper_es_ES-mls_10246-low_lowv | piper | 2.08 | 825.8 | 0.05±0.0068 | 0.2135 | 0.206 | 0.3203 | N/A | 565.2 | N/A | N/A |
-| piper_es_ES-mls_10246-low_high | piper | 2.08 | 877.2 | 0.047±0.0187 | 0.4261 | 0.3817 | 0.7844 | N/A | 611.4 | N/A | N/A |
-| piper_es_ES-sharvard-medium_fa | piper | 1.99 | 363.0 | 0.071±0.0049 | 0.1884 | 0.1708 | 0.3495 | N/A | 565.2 | N/A | N/A |
-| piper_es_ES-sharvard-medium_de | piper | 1.99 | 426.2 | 0.068±0.0034 | 0.2324 | 0.2069 | 0.4322 | N/A | 565.2 | N/A | N/A |
-| piper_es_ES-sharvard-medium_sl | piper | 1.99 | 465.2 | 0.07±0.0077 | 0.2907 | 0.2665 | 0.5587 | N/A | 577.4 | N/A | N/A |
-| piper_es_ES-sharvard-medium_lo | piper | 1.99 | 466.2 | 0.076±0.0053 | 0.2559 | 0.2329 | 0.4712 | N/A | 577.4 | N/A | N/A |
-| piper_es_ES-sharvard-medium_hi | piper | 1.99 | 467.7 | 0.077±0.0059 | 0.2665 | 0.2431 | 0.4959 | N/A | 577.4 | N/A | N/A |
+| piper_es_ES-davefx-medium_fast | piper | 1.36 | 336.0 | 0.075±0.0225 | 0.192 | 0.1818 | 0.3212 | 0.2686 | 100.0 | N/A | 80.0 |
+| piper_es_ES-davefx-medium_defa | piper | 1.36 | 390.7 | 0.058±0.0134 | 0.191 | 0.1555 | 0.4364 | 0.2728 | 100.0 | N/A | 92.0 |
+| piper_es_ES-davefx-medium_slow | piper | 1.36 | 406.9 | 0.057±0.0144 | 0.22 | 0.2012 | 0.5051 | 0.2358 | 100.0 | N/A | 91.0 |
+| piper_es_ES-davefx-medium_lowv | piper | 1.36 | 407.2 | 0.073±0.0112 | 0.2348 | 0.2186 | 0.4446 | 0.1907 | 100.0 | N/A | 82.0 |
+| piper_es_ES-davefx-medium_high | piper | 1.36 | 407.3 | 0.061±0.0182 | 0.2028 | 0.1783 | 0.4808 | 0.2483 | 100.0 | N/A | 91.0 |
+| coqui_vits_speed08 | coqui | 0.35 | 1718.1 | 0.055±0.0119 | - | 0.2591 | 0.449 | 0.254 | 100.0 | N/A | 88.0 |
+| coqui_vits_speed10 | coqui | 0.24 | 1671.0 | 0.063±0.0136 | - | 0.2697 | 0.6301 | 0.2748 | 100.0 | N/A | 88.0 |
+| coqui_vits_speed12 | coqui | 0.27 | 1668.2 | 0.06±0.0135 | - | 0.2551 | 0.5244 | 0.1821 | 100.0 | N/A | 81.0 |
+| coqui_xtts_v2 | coqui | 8.68 | 4990.0 | 1.54±0.7184 | - | 8.2506 | 18.3564 | 0.2387 | 100.0 | N/A | 90.0 |
 
 > \* TTFB real solo para motores con streaming (Piper). Para Coqui/KittenTTS el tiempo de latencia es `tiempo_sintesis_s` (ver P50/P95).
 
 ## Gráficas
 
 ### rtf_ttfb_barras.png
-![rtf_ttfb_barras.png](graficas_tts_v2\rtf_ttfb_barras.png)
+![rtf_ttfb_barras.png](graficas_tts_v2/rtf_ttfb_barras.png)
 
 ### boxplot_latencias.png
-![boxplot_latencias.png](graficas_tts_v2\boxplot_latencias.png)
+![boxplot_latencias.png](graficas_tts_v2/boxplot_latencias.png)
 
 ### radar_metricas.png
-![radar_metricas.png](graficas_tts_v2\radar_metricas.png)
+![radar_metricas.png](graficas_tts_v2/radar_metricas.png)
+
+### scatter_rtf_latencia.png
+![scatter_rtf_latencia.png](graficas_tts_v2/scatter_rtf_latencia.png)
 
 ## RTF por grupo de longitud de frase
 
@@ -56,123 +53,75 @@ Detecta si un motor penaliza desproporcionadamente frases largas o tiene un cost
 
 ### piper_es_ES-davefx-medium_fast (piper)
 
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
+| Grupo | N frases | RTF | T.medio±std (s) | P50(s) | P95(s) |
 | --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.059 | 0.064 | 0.0825 | 0.062 |
-| media | 20 | 0.059 | 0.137 | 0.1663 | 0.134 |
-| larga | 15 | 0.059 | 0.266 | 0.291 | 0.266 |
+| corta | 15 | 0.105 | 0.112±0.0445 | 0.124 | 0.1675 |
+| media | 20 | 0.08 | 0.182±0.0279 | 0.1865 | 0.2164 |
+| larga | 15 | 0.065 | 0.293±0.0175 | 0.298 | 0.3137 |
 
 ### piper_es_ES-davefx-medium_default (piper)
 
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
+| Grupo | N frases | RTF | T.medio±std (s) | P50(s) | P95(s) |
 | --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.061 | 0.087 | 0.1243 | 0.084 |
-| media | 20 | 0.063 | 0.1855 | 0.223 | 0.183 |
-| larga | 15 | 0.063 | 0.358 | 0.3863 | 0.361 |
+| corta | 15 | 0.043 | 0.06±0.0229 | 0.053 | 0.0954 |
+| media | 20 | 0.054 | 0.158±0.0524 | 0.1625 | 0.2354 |
+| larga | 15 | 0.065 | 0.371±0.0667 | 0.355 | 0.4861 |
 
 ### piper_es_ES-davefx-medium_slow (piper)
 
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
+| Grupo | N frases | RTF | T.medio±std (s) | P50(s) | P95(s) |
 | --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.065 | 0.108 | 0.1507 | 0.109 |
-| media | 20 | 0.067 | 0.2375 | 0.2955 | 0.232 |
-| larga | 15 | 0.068 | 0.47 | 0.5152 | 0.462 |
+| corta | 15 | 0.036 | 0.059±0.0188 | 0.054 | 0.0855 |
+| media | 20 | 0.054 | 0.189±0.0609 | 0.2035 | 0.2666 |
+| larga | 15 | 0.063 | 0.428±0.0809 | 0.405 | 0.5574 |
 
 ### piper_es_ES-davefx-medium_lowvar (piper)
 
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
+| Grupo | N frases | RTF | T.medio±std (s) | P50(s) | P95(s) |
 | --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.079 | 0.097 | 0.1679 | 0.109 |
-| media | 20 | 0.071 | 0.204 | 0.2381 | 0.204 |
-| larga | 15 | 0.066 | 0.362 | 0.4235 | 0.37 |
+| corta | 15 | 0.08 | 0.109±0.0407 | 0.117 | 0.1581 |
+| media | 20 | 0.077 | 0.22±0.037 | 0.2185 | 0.2691 |
+| larga | 15 | 0.069 | 0.389±0.0434 | 0.391 | 0.4453 |
 
 ### piper_es_ES-davefx-medium_highvar (piper)
 
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
+| Grupo | N frases | RTF | T.medio±std (s) | P50(s) | P95(s) |
 | --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.072 | 0.104 | 0.1369 | 0.101 |
-| media | 20 | 0.07 | 0.2105 | 0.2592 | 0.208 |
-| larga | 15 | 0.068 | 0.394 | 0.439 | 0.396 |
+| corta | 15 | 0.037 | 0.051±0.0126 | 0.052 | 0.0699 |
+| media | 20 | 0.06 | 0.178±0.0785 | 0.1725 | 0.312 |
+| larga | 15 | 0.067 | 0.392±0.0855 | 0.384 | 0.5366 |
 
-### piper_es_ES-mls_10246-low_fast (piper)
+### coqui_vits_speed08 (coqui)
 
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
+| Grupo | N frases | RTF | T.medio±std (s) | P50(s) | P95(s) |
 | --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.049 | 0.224 | 0.4055 | 0.233 |
-| media | 20 | 0.048 | 0.235 | 0.3299 | 0.249 |
-| larga | 15 | 0.053 | 0.291 | 0.3148 | 0.288 |
+| corta | 15 | 0.043 | 0.121±0.0242 | 0.122 | 0.1537 |
+| media | 20 | 0.059 | 0.267±0.0663 | 0.2545 | 0.3286 |
+| larga | 15 | 0.056 | 0.394±0.0514 | 0.384 | 0.4929 |
 
-### piper_es_ES-mls_10246-low_default (piper)
+### coqui_vits_speed10 (coqui)
 
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
+| Grupo | N frases | RTF | T.medio±std (s) | P50(s) | P95(s) |
 | --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.042 | 0.272 | 0.6493 | 0.331 |
-| media | 20 | 0.046 | 0.3065 | 0.4209 | 0.316 |
-| larga | 15 | 0.049 | 0.343 | 0.3768 | 0.341 |
+| corta | 15 | 0.048 | 0.139±0.0386 | 0.133 | 0.2035 |
+| media | 20 | 0.061 | 0.28±0.0376 | 0.288 | 0.3272 |
+| larga | 15 | 0.072 | 0.508±0.0892 | 0.472 | 0.6276 |
 
-### piper_es_ES-mls_10246-low_slow (piper)
+### coqui_vits_speed12 (coqui)
 
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
+| Grupo | N frases | RTF | T.medio±std (s) | P50(s) | P95(s) |
 | --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.04 | 0.347 | 0.7098 | 0.394 |
-| media | 20 | 0.049 | 0.3935 | 0.5669 | 0.401 |
-| larga | 15 | 0.048 | 0.389 | 0.4104 | 0.384 |
+| corta | 15 | 0.07 | 0.199±0.0439 | 0.193 | 0.2603 |
+| media | 20 | 0.055 | 0.25±0.0364 | 0.239 | 0.2881 |
+| larga | 15 | 0.061 | 0.42±0.0973 | 0.383 | 0.5832 |
 
-### piper_es_ES-mls_10246-low_lowvar (piper)
+### coqui_xtts_v2 (coqui)
 
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
+| Grupo | N frases | RTF | T.medio±std (s) | P50(s) | P95(s) |
 | --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.046 | 0.136 | 0.2891 | 0.16 |
-| media | 20 | 0.05 | 0.183 | 0.2796 | 0.199 |
-| larga | 15 | 0.054 | 0.297 | 0.3073 | 0.295 |
-
-### piper_es_ES-mls_10246-low_highvar (piper)
-
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
-| --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.043 | 0.408 | 0.766 | 0.458 |
-| media | 20 | 0.048 | 0.405 | 0.6134 | 0.453 |
-| larga | 15 | 0.051 | 0.377 | 0.4199 | 0.379 |
-
-### piper_es_ES-sharvard-medium_fast (piper)
-
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
-| --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.075 | 0.087 | 0.1192 | 0.079 |
-| media | 20 | 0.071 | 0.167 | 0.2031 | 0.171 |
-| larga | 15 | 0.07 | 0.328 | 0.3488 | 0.328 |
-
-### piper_es_ES-sharvard-medium_default (piper)
-
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
-| --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.07 | 0.097 | 0.1436 | 0.096 |
-| media | 20 | 0.068 | 0.204 | 0.2482 | 0.209 |
-| larga | 15 | 0.067 | 0.408 | 0.4396 | 0.407 |
-
-### piper_es_ES-sharvard-medium_slow (piper)
-
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
-| --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.07 | 0.124 | 0.1683 | 0.116 |
-| media | 20 | 0.072 | 0.2615 | 0.3436 | 0.267 |
-| larga | 15 | 0.069 | 0.515 | 0.572 | 0.507 |
-
-### piper_es_ES-sharvard-medium_lowvar (piper)
-
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
-| --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.077 | 0.104 | 0.1518 | 0.104 |
-| media | 20 | 0.077 | 0.231 | 0.2937 | 0.235 |
-| larga | 15 | 0.074 | 0.447 | 0.485 | 0.443 |
-
-### piper_es_ES-sharvard-medium_highvar (piper)
-
-| Grupo | N frases | RTF | P50(s) | P95(s) | T.medio(s) |
-| --- | --- | --- | --- | --- | --- |
-| corta | 15 | 0.082 | 0.119 | 0.1784 | 0.113 |
-| media | 20 | 0.079 | 0.2375 | 0.3054 | 0.248 |
-| larga | 15 | 0.075 | 0.459 | 0.496 | 0.457 |
+| corta | 15 | 1.713 | 6.702±2.5948 | 6.149 | 10.9822 |
+| media | 20 | 1.711 | 8.147±2.5537 | 7.3255 | 12.4846 |
+| larga | 15 | 1.366 | 13.842±2.3046 | 13.862 | 17.2785 |
 
 ## Notas de implementación
 
@@ -183,3 +132,61 @@ Detecta si un motor penaliza desproporcionadamente frases largas o tiene un cost
 - **TTFB real solo en Piper:** Coqui/Kitten no exponen streaming estable.
 - **Fallback XTTS→VITS:** automático si RAM libre < 2.5 GB.
 - **Throttling:** bitmask 0x0 = sistema sano; >0 indica bajo voltaje o limitación de frecuencia.
+
+
+## Recomendación para TurtleBot4 — voz española femenina con modulación emocional
+
+### Criterios de selección
+- **Modulación emocional**: capacidad de variar prosodia (velocidad, tono, énfasis).
+- **Español nativo**: modelo entrenado en español, sin traducción.
+- **Voz femenina**: preferencia del proyecto.
+- **Restricciones hardware**: RPi4 — 4 GB RAM compartida con ROS2 Jazzy (~1-1.5 GB).
+  RAM disponible efectiva para TTS: ~1.5-2 GB.
+
+### Top 3 configs por score (RTF 50% + RAM 30% + WER 20%)
+
+| # | Config | Motor | RTF | RAM (MB) | P50 (s) | WER |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | piper_es_ES-davefx-medium_lowv | piper | 0.073 | 407.2 | 0.2186 | 0.1907 |
+| 2 | piper_es_ES-davefx-medium_slow | piper | 0.057 | 406.9 | 0.2012 | 0.2358 |
+| 3 | piper_es_ES-davefx-medium_high | piper | 0.061 | 407.3 | 0.1783 | 0.2483 |
+
+### Análisis por motor
+
+**Piper (`es_ES-davefx-medium`)**
+- ✅ Velocidad excelente (RTF ~0.04-0.06), TTFB streaming <200 ms.
+- ✅ RAM mínima (~350-420 MB) — compatible sin restricciones con ROS2.
+- ⚠️ Voz `davefx` es **masculina**. Para voz femenina se necesita otro modelo:
+  `es_ES-sharvard-medium` o `es_ES-mls_9972-low` (descargar de Hugging Face).
+- ❌ Modulación emocional limitada: los parámetros `noise_scale`/`length_scale`
+  permiten variaciones de ritmo y naturalidad, pero no entonación emocional.
+
+**Coqui VITS ES (css10)**
+- ✅ Voz **femenina** (corpus CSS10 español — locutora nativa).
+- ✅ Mejor prosodia natural que Piper VITS en español.
+- ✅ `length_scale` permite ajustar velocidad; varianza de ruido afecta expresividad.
+- ⚠️ RAM alta (~1.6 GB) — ajustada para RPi4 con ROS2 activo; monitorizar swap.
+- ❌ Sin control explícito de emoción (happy/sad/angry); prosodia fija del corpus.
+
+**Coqui XTTS-v2** *(no ejecutado correctamente — necesita `speaker_wav`)*
+- ✅ Máxima calidad y modulación emocional (clonación de voz + control de idioma).
+- ✅ Voz personalizable: graba cualquier mujer 15 s → clona la voz.
+- ❌ RAM ~2.5-3 GB → **inviable en RPi4 con ROS2**. Requiere PC/servidor.
+- ❌ Sin `speaker_wav` configurado en el benchmark actual (ver fix pendiente).
+
+### Recomendación final
+
+**Para RPi4 con ROS2 (producción)**:
+> **Piper + voz femenina española** (`es_ES-sharvard-medium` o `es_ES-mls_9972-low`).
+> Es la única opción realista con las restricciones de RAM.
+> La modulación emocional se implementa vía variación de `length_scale` (velocidad) y
+> síntesis de frases distintas para cada emoción (p. ej. velocidad alta = urgencia).
+
+**Para desarrollo/evaluación en PC**:
+> **Coqui XTTS-v2** con `speaker_wav` de mujer en español.
+> Permite clonar una voz específica y tiene la mejor modulación emocional disponible.
+> Configurar `speaker_wav` apuntando a un audio de referencia de 10-15 s.
+
+**Si el robot acepta ~1.5 GB para TTS**:
+> **Coqui VITS CSS10** (`speed=1.0`) — voz femenina nativa, buena fluidez,
+> RTF ~0.047 y sin necesidad de `speaker_wav`. Mejor opción intermedia.

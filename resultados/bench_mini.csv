@@ -1,0 +1,73 @@
+tipo,motor,nombre,frase_o_clip,grupo,tiempo_s,std_tiempo_s,rtf,wer,ram_pico_mb,cpu_pct_pico
+stt,faster-whisper,whisper-tiny_int8_beam1,A1.wav,corta,0.442,0.0105,0.086,3.333,771.1,100.0
+stt,faster-whisper,whisper-tiny_int8_beam1,A2.wav,corta,0.201,0.0005,0.036,2.25,745.9,100.0
+stt,faster-whisper,whisper-tiny_int8_beam1,A3.wav,corta,0.211,0.0083,0.027,2.5,726.7,99.6
+stt,faster-whisper,whisper-tiny_int8_beam1,A4.wav,media,0.457,0.0234,0.043,1.778,756.1,99.7
+stt,faster-whisper,whisper-tiny_int8_beam1,A5.wav,media,0.22,0.0013,0.04,0.0,739.8,100.0
+stt,faster-whisper,whisper-tiny_int8_beam1,A6.wav,media,0.225,0.0007,0.029,0.444,777.6,99.7
+stt,faster-whisper,whisper-tiny_int8_beam1,A7.wav,larga,0.79,0.2416,0.074,0.632,778.0,100.0
+stt,faster-whisper,whisper-tiny_int8_beam1,A8.wav,larga,0.292,0.0546,0.021,0.368,756.3,99.7
+stt,faster-whisper,whisper-tiny_int8_beam1,A9.wav,larga,0.413,0.0013,0.036,0.632,783.3,99.7
+stt,faster-whisper,whisper-tiny_int8_beam5,A1.wav,corta,0.239,0.0016,0.047,3.667,740.6,99.7
+stt,faster-whisper,whisper-tiny_int8_beam5,A2.wav,corta,0.252,0.0505,0.046,2.25,756.1,100.0
+stt,faster-whisper,whisper-tiny_int8_beam5,A3.wav,corta,0.231,0.0047,0.03,2.5,730.3,99.6
+stt,faster-whisper,whisper-tiny_int8_beam5,A4.wav,media,0.801,0.0139,0.075,2.111,801.3,100.0
+stt,faster-whisper,whisper-tiny_int8_beam5,A5.wav,media,0.256,0.0056,0.046,0.0,801.3,99.6
+stt,faster-whisper,whisper-tiny_int8_beam5,A6.wav,media,0.258,0.0015,0.033,0.444,801.3,100.0
+stt,faster-whisper,whisper-tiny_int8_beam5,A7.wav,larga,1.136,0.1122,0.107,0.737,801.3,99.6
+stt,faster-whisper,whisper-tiny_int8_beam5,A8.wav,larga,0.341,0.0298,0.025,0.421,806.4,99.6
+stt,faster-whisper,whisper-tiny_int8_beam5,A9.wav,larga,0.489,0.0147,0.043,0.526,806.4,99.6
+stt,faster-whisper,whisper-base_int8_beam1,A1.wav,corta,0.373,0.0137,0.073,3.667,899.8,100.0
+stt,faster-whisper,whisper-base_int8_beam1,A2.wav,corta,0.426,0.0005,0.077,2.25,899.8,99.6
+stt,faster-whisper,whisper-base_int8_beam1,A3.wav,corta,0.382,0.0167,0.049,2.5,899.8,99.6
+stt,faster-whisper,whisper-base_int8_beam1,A4.wav,media,1.106,0.1523,0.104,1.667,899.8,100.0
+stt,faster-whisper,whisper-base_int8_beam1,A5.wav,media,0.393,0.019,0.071,0.0,899.8,99.6
+stt,faster-whisper,whisper-base_int8_beam1,A6.wav,media,0.416,0.0021,0.053,0.556,838.3,99.7
+stt,faster-whisper,whisper-base_int8_beam1,A7.wav,larga,1.043,0.0467,0.098,0.368,911.5,99.6
+stt,faster-whisper,whisper-base_int8_beam1,A8.wav,larga,0.486,0.0304,0.036,0.158,911.6,99.6
+stt,faster-whisper,whisper-base_int8_beam1,A9.wav,larga,2.256,0.2748,0.199,0.263,911.6,100.0
+stt,faster-whisper,whisper-base_int8_beam3,A1.wav,corta,0.405,0.0019,0.079,4.0,894.2,99.7
+stt,faster-whisper,whisper-base_int8_beam3,A2.wav,corta,0.414,0.0253,0.075,2.25,898.9,100.0
+stt,faster-whisper,whisper-base_int8_beam3,A3.wav,corta,0.432,0.0305,0.055,2.25,886.5,100.0
+stt,faster-whisper,whisper-base_int8_beam3,A4.wav,media,1.038,0.0034,0.098,1.667,841.0,100.0
+stt,faster-whisper,whisper-base_int8_beam3,A5.wav,media,0.403,0.0131,0.073,0.0,910.7,99.5
+stt,faster-whisper,whisper-base_int8_beam3,A6.wav,media,0.432,0.0009,0.055,0.444,842.0,99.7
+stt,faster-whisper,whisper-base_int8_beam3,A7.wav,larga,2.069,0.943,0.194,0.368,910.7,99.4
+stt,faster-whisper,whisper-base_int8_beam3,A8.wav,larga,0.68,0.0255,0.05,0.158,910.7,100.0
+stt,faster-whisper,whisper-base_int8_beam3,A9.wav,larga,0.638,0.0188,0.056,0.21,910.7,99.6
+stt,vosk,vosk,A1.wav,corta,0.814,0.0309,0.158,2.0,795.8,14.9
+stt,vosk,vosk,A2.wav,corta,0.478,0.0065,0.086,2.0,795.8,14.9
+stt,vosk,vosk,A3.wav,corta,0.549,0.0153,0.07,2.0,795.8,15.0
+stt,vosk,vosk,A4.wav,media,0.672,0.0454,0.063,1.778,795.8,14.9
+stt,vosk,vosk,A5.wav,media,0.484,0.0103,0.087,0.3,795.8,12.5
+stt,vosk,vosk,A6.wav,media,0.542,0.0213,0.069,0.667,795.8,14.9
+stt,vosk,vosk,A7.wav,larga,0.651,0.0207,0.061,0.0,795.8,14.9
+stt,vosk,vosk,A8.wav,larga,0.764,0.0151,0.056,0.105,795.8,12.5
+stt,vosk,vosk,A9.wav,larga,0.854,0.0418,0.075,0.316,795.8,14.9
+tts,piper,piper_es_ES-davefx-medium_default,para el robot,corta,0.04,0.0008,0.054,0.3333,816.7,0.0
+tts,piper,piper_es_ES-davefx-medium_default,Sistema listo.,corta,0.037,0.0021,0.033,0.0,832.0,0.0
+tts,piper,piper_es_ES-davefx-medium_default,Giro completado.,corta,0.037,0.0012,0.033,0.5,832.0,0.0
+tts,piper,piper_es_ES-davefx-medium_default,navega hasta la cocina y espera mis inst,media,0.096,0.0044,0.035,0.2222,837.0,100.0
+tts,piper,piper_es_ES-davefx-medium_default,"No entiendo, por favor repite el comando",media,0.068,0.0039,0.033,0.1429,837.0,49.8
+tts,piper,piper_es_ES-davefx-medium_default,Iniciando secuencia de navegación autóno,media,0.08,0.0058,0.034,0.6,837.0,52.4
+tts,piper,piper_es_ES-davefx-medium_default,"avanza hasta el salón, gira noventa grad",larga,0.154,0.0003,0.033,0.4211,880.3,49.9
+tts,piper,piper_es_ES-davefx-medium_default,He detectado un obstáculo inesperado en ,larga,0.163,0.0018,0.033,0.0,882.9,52.2
+tts,piper,piper_es_ES-davefx-medium_default,El sistema de visión ha identificado con,larga,0.202,0.0005,0.033,0.2857,960.7,52.2
+tts,coqui_vits,coqui_vits_speed10,para el robot,corta,0.07,0.0018,0.046,0.3333,1352.7,49.2
+tts,coqui_vits,coqui_vits_speed10,Sistema listo.,corta,0.118,0.012,0.043,0.0,1361.7,49.8
+tts,coqui_vits,coqui_vits_speed10,Giro completado.,corta,0.105,0.0055,0.041,0.5,1390.9,49.8
+tts,coqui_vits,coqui_vits_speed10,navega hasta la cocina y espera mis inst,media,0.162,0.012,0.046,0.3333,1423.3,49.9
+tts,coqui_vits,coqui_vits_speed10,"No entiendo, por favor repite el comando",media,0.165,0.0081,0.04,0.1429,1495.9,52.3
+tts,coqui_vits,coqui_vits_speed10,Iniciando secuencia de navegación autóno,media,0.181,0.0025,0.042,0.4,1508.1,49.8
+tts,coqui_vits,coqui_vits_speed10,"avanza hasta el salón, gira noventa grad",larga,0.321,0.0159,0.047,0.3158,1659.4,52.2
+tts,coqui_vits,coqui_vits_speed10,He detectado un obstáculo inesperado en ,larga,0.254,0.0141,0.044,0.0,1585.4,100.0
+tts,coqui_vits,coqui_vits_speed10,El sistema de visión ha identificado con,larga,0.292,0.0234,0.041,0.3333,1624.4,52.2
+tts,coqui_vits,coqui_vits_speed08,para el robot,corta,0.061,0.0199,0.039,0.3333,1623.4,49.8
+tts,coqui_vits,coqui_vits_speed08,Sistema listo.,corta,0.106,0.0123,0.042,0.0,1623.1,52.2
+tts,coqui_vits,coqui_vits_speed08,Giro completado.,corta,0.13,0.0109,0.047,0.5,1622.5,49.9
+tts,coqui_vits,coqui_vits_speed08,navega hasta la cocina y espera mis inst,media,0.137,0.0365,0.038,0.4444,1621.4,49.9
+tts,coqui_vits,coqui_vits_speed08,"No entiendo, por favor repite el comando",media,0.177,0.0035,0.043,0.0,1538.5,49.9
+tts,coqui_vits,coqui_vits_speed08,Iniciando secuencia de navegación autóno,media,0.219,0.0358,0.047,0.2,1560.2,49.9
+tts,coqui_vits,coqui_vits_speed08,"avanza hasta el salón, gira noventa grad",larga,0.317,0.0307,0.046,0.2632,1694.6,52.3
+tts,coqui_vits,coqui_vits_speed08,He detectado un obstáculo inesperado en ,larga,0.258,0.0257,0.044,0.0714,1617.8,52.3
+tts,coqui_vits,coqui_vits_speed08,El sistema de visión ha identificado con,larga,0.285,0.0039,0.041,0.381,1655.0,49.9

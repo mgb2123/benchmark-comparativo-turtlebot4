@@ -1,19 +1,12 @@
-# Notas sobre la descarga de modelos — desviaciones respecto a DESCARGAR_MODELOS_RPI4.md
+# Notas sobre la descarga de modelos — desviaciones y problemas encontrados
 
-Registro de lo que se hizo diferente al ejecutar la descarga en esta RPi4,
-y los problemas encontrados.
-
----
-
-## Paso 1 — LLMs: OMITIDOS
-
-Los tres modelos `.gguf` (Qwen2.5-3B, Llama-3.2-3B, Phi-3.5-mini) no se
-descargaron intencionalmente. En la RPi4 no se ejecutarán los benchmarks LLM
-(`bench_llm_escenarios.py`), por lo que no son necesarios.
+Registro de lo que se hizo diferente al ejecutar la configuración, tanto en RPi4
+como en PC (Ubuntu 24.04, Python 3.12). Las correcciones marcadas como
+**[INCORPORADO]** ya están reflejadas en `DESCARGAR_MODELOS_RPI4.md`.
 
 ---
 
-## Paso 2 — Vosk: SIN CAMBIOS
+## Paso 1 — Vosk: SIN CAMBIOS
 
 Descarga e instalación idéntica a lo indicado en el documento:
 
@@ -29,7 +22,7 @@ No hubo problemas. Velocidad media ~8 MB/s.
 
 ---
 
-## Paso 3 — Whisper: PRIMER INTENTO INCORRECTO → CORRECCIÓN
+## Paso 2 — Whisper: PRIMER INTENTO INCORRECTO → CORRECCIÓN
 
 ### Primer intento (según el paso primario del documento):
 
@@ -58,7 +51,7 @@ directamente, y falla con:
 [ERROR] Unable to open file 'model.bin' in model '.../models/whisper/tiny'
 ```
 
-### Solución aplicada (alternativa del documento, Paso 3 — sección "Alternativa con huggingface_hub"):
+### Solución aplicada **[INCORPORADO]**
 
 ```python
 from huggingface_hub import snapshot_download
@@ -69,14 +62,12 @@ snapshot_download(repo_id='Systran/faster-whisper-base', local_dir='models/whisp
 `snapshot_download` con `local_dir` coloca los ficheros planos directamente
 en la carpeta destino, incluido `model.bin`. Esto es lo que espera el benchmark.
 
-**Conclusión:** En DESCARGAR_MODELOS_RPI4.md el método primario del Paso 3
-(`WhisperModel(..., download_root=...)`) NO es compatible con la estructura
-que espera `bench_stt_exhaustivo.py`. Usar siempre la alternativa con
-`snapshot_download(..., local_dir=...)`.
+El documento principal ya usa este método como primario. `WhisperModel(..., download_root=...)`
+queda solo como nota negativa en "Problemas comunes".
 
 ---
 
-## Paso 4 — Piper: SIN CAMBIOS
+## Paso 3 — Piper: SIN CAMBIOS
 
 `wget` directo a HuggingFace funcionó sin problemas (no fue necesario el
 fallback con `hf_hub_download`). Las 3 voces descargadas correctamente:
@@ -87,35 +78,49 @@ fallback con `hf_hub_download`). Las 3 voces descargadas correctamente:
 
 ---
 
-## Paso 5 — Coqui TTS: PROBLEMA DE ESPACIO EN DISCO
+## Paso 4 — Coqui TTS
 
-### Primer intento:
+### En RPi4: PROBLEMA DE ESPACIO EN DISCO
 
 ```bash
-pip install TTS
+pip install TTS        # falla con: ERROR: [Errno 28] No space left on device
 ```
 
-**Fallo:** `ERROR: [Errno 28] No space left on device`
-
-Causa: el caché de pip (`~/.cache/pip`) ocupaba **1.35 GB** y las dependencias
-de TTS (llvmlite ~55 MB, torch, spacy, etc.) no cabían.
-
-### Solución:
+Causa: el caché de pip ocupaba **1.35 GB**. Solución:
 
 ```bash
-pip cache purge          # liberó 1.35 GB
+pip cache purge
 pip install TTS --no-cache-dir
 ```
 
-Instalación completada correctamente.
+### En PC (Python 3.12): `TTS` NO COMPATIBLE → usar `coqui-tts` **[INCORPORADO]**
 
-**Recomendación para el documento:** añadir `pip cache purge` o usar
-`--no-cache-dir` en entornos con disco ajustado (SD card de 32 GB con
-SO + dependencias ya instaladas).
+El paquete `TTS` (Coqui original) solo soporta Python ≤ 3.11. En Python 3.12
+falla con `ERROR: No matching distribution found for TTS`.
+
+Solución: instalar el fork `coqui-tts` que mantiene la misma API:
+
+```bash
+pip install "coqui-tts[codec]"
+```
+
+La opción `[codec]` instala `torchcodec`, requerido desde PyTorch 2.9.  
+Sin ella falla con: `ImportError: the torchcodec library is required for audio IO`.
+
+Tras instalar, se necesitan tres parches en el venv (ver Paso 0.5 del documento principal):
+
+1. **numba 0.65.x + coverage 7.x**: `coverage.types.Tracer` fue eliminado en coverage 7.x.
+   El módulo `coverage_support.py` de numba falla al importarse a través de librosa → TTS.
+   Fix: desactivar condicionalmente `coverage_available` cuando la API no es compatible.
+
+2. **transformers 5.x eliminó `isin_mps_friendly`**: usada por la capa tortoise/autoregressive
+   de XTTS. Fix: reemplazar la importación con `torch.isin` (nativo desde PyTorch 2.4).
+
+3. **torchcodec**: ya resuelto por la opción `[codec]` arriba.
 
 ---
 
-## Paso 6 — KittenTTS: NO VERIFICADO
+## Paso 5 — KittenTTS: NO VERIFICADO
 
 No se instaló ni comprobó. El benchmark lo omite automáticamente con `[SKIP]`
 si no está disponible, según el propio documento.
@@ -124,11 +129,23 @@ si no está disponible, según el propio documento.
 
 ## Resumen de desviaciones
 
+### RPi4 (Ubuntu 22.04, Python 3.10)
+
 | Paso | Estado | Desviación |
 |------|--------|-----------|
-| 1 — LLMs | OMITIDO | Intencional (no se ejecutan en RPi4) |
-| 2 — Vosk | OK | Ninguna |
-| 3 — Whisper | OK (2.º intento) | `download_root` no funciona; usar `snapshot_download(..., local_dir=...)` |
-| 4 — Piper | OK | Ninguna |
-| 5 — Coqui TTS | OK (2.º intento) | Requirió `pip cache purge` + `--no-cache-dir` por falta de espacio |
-| 6 — KittenTTS | NO VERIFICADO | Sin modelos locales, el bench lo skipea |
+| 0.5 — venv / deps | OK | — |
+| 1 — Vosk | OK | Ninguna |
+| 2 — Whisper | OK (2.º intento) | `download_root` no funciona → `snapshot_download` [INCORPORADO] |
+| 3 — Piper | OK | Ninguna |
+| 4 — Coqui TTS | OK (2.º intento) | `pip cache purge` + `--no-cache-dir` por falta de espacio |
+| 5 — KittenTTS | NO VERIFICADO | Sin modelos locales, el bench lo skipea |
+
+### PC (Ubuntu 24.04, Python 3.12)
+
+| Componente | Estado | Desviación |
+|------------|--------|-----------|
+| venv | OK | Requirió `sudo apt install python3.12-venv` |
+| `TTS` → `coqui-tts` | OK | `TTS` no soporta Python 3.12 → `coqui-tts[codec]` [INCORPORADO] |
+| numba + coverage | OK (parcheado) | `coverage_support.py` usa API eliminada en coverage 7.x [INCORPORADO] |
+| transformers + XTTS | OK (parcheado) | `isin_mps_friendly` eliminado en transformers 5.x [INCORPORADO] |
+| torchcodec | OK | Incluido con `coqui-tts[codec]` [INCORPORADO] |

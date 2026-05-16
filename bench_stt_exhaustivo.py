@@ -88,10 +88,13 @@ WHISPER_CONFIGS = [
     {"modelo": "tiny",  "compute_type": "int8",    "beam_size": 5, "best_of": 3},
     {"modelo": "tiny",  "compute_type": "float32", "beam_size": 1, "best_of": 1},
     {"modelo": "tiny",  "compute_type": "float32", "beam_size": 3, "best_of": 1},
+    {"modelo": "tiny",  "compute_type": "float32", "beam_size": 5, "best_of": 3},
     {"modelo": "base",  "compute_type": "int8",    "beam_size": 1, "best_of": 1},
     {"modelo": "base",  "compute_type": "int8",    "beam_size": 3, "best_of": 1},
     {"modelo": "base",  "compute_type": "int8",    "beam_size": 5, "best_of": 3},
     {"modelo": "base",  "compute_type": "float32", "beam_size": 1, "best_of": 1},
+    {"modelo": "base",  "compute_type": "float32", "beam_size": 3, "best_of": 1},
+    {"modelo": "base",  "compute_type": "float32", "beam_size": 5, "best_of": 3},
     # {"modelo": "small", "compute_type": "int8",    "beam_size": 1, "best_of": 1},  # ~460 MB, descarga lenta
 ]
 
@@ -1700,6 +1703,8 @@ def main():
                         default=list(DEFAULT_WEIGHTS), metavar=("ALPHA", "BETA", "GAMMA"),
                         help="Pesos score compuesto: ALPHA*(1-WER) + BETA*(1-RTF) + GAMMA*(1-RAM). "
                              "Default: 0.4 0.4 0.2")
+    parser.add_argument("--audios-dir", default=None, metavar="DIR",
+                        help="Carpeta con WAVs de test (default: audios/ si existe, si no audio_tests/)")
     args = parser.parse_args()
 
     global N_REPS
@@ -1707,7 +1712,13 @@ def main():
     pesos = tuple(args.weights)
 
     models_dir = os.path.abspath(args.models_dir)
-    audio_dir = os.path.join(os.path.dirname(__file__), "audio_tests")
+    _script_dir = os.path.dirname(os.path.abspath(__file__))
+    if args.audios_dir:
+        audio_dir = os.path.abspath(args.audios_dir)
+    elif os.path.isdir(os.path.join(_script_dir, "audios")):
+        audio_dir = os.path.join(_script_dir, "audios")
+    else:
+        audio_dir = os.path.join(_script_dir, "audio_tests")
     output = os.path.join(os.path.dirname(__file__), "resultados", "bench_stt_exhaustivo.json")
     graficas_dir = os.path.join(os.path.dirname(__file__), "resultados", "graficas_stt")
     informe_path = os.path.join(os.path.dirname(__file__), "resultados", "informe_stt_parametros.md")
@@ -1749,26 +1760,25 @@ def main():
             print(f"  python3 {os.path.basename(__file__)} --generar-audio --piper-fallback")
             sys.exit(0)
 
-    # Recoge solo archivos fraseNN.wav (con o sin guión bajo), ordena por número extraído
-    # para garantizar que frase00→FRASES[0], frase01→FRASES[1], etc.
+    # Extrae índice 0-based desde el nombre del archivo:
+    #   frase_00.wav → 0  (patrón clásico, 0-based)
+    #   A1.wav / C3.wav  → 0 / 2  (número 1-based de sufijo → restar 1)
     def _indice_frase(nombre):
         import re
         m = re.search(r'frase_?(\d+)', nombre)
-        return int(m.group(1)) if m else 999
+        if m:
+            return int(m.group(1))
+        m = re.search(r'(\d+)', nombre)
+        if m:
+            return max(0, int(m.group(1)) - 1)  # 1-based → 0-based
+        return 999
 
     if os.path.isdir(audio_dir):
-        candidatos = [f for f in os.listdir(audio_dir)
-                      if f.endswith(".wav") and _indice_frase(f) < 999]
-        archivos_wav = [
-            os.path.join(audio_dir, f)
-            for f in sorted(candidatos, key=_indice_frase)
-        ]
-        if not archivos_wav:
-            # fallback: cualquier .wav presente, orden alfabético
-            archivos_wav = sorted([
-                os.path.join(audio_dir, f)
-                for f in os.listdir(audio_dir) if f.endswith(".wav")
-            ])
+        # Busca WAVs de forma recursiva en todas las subcarpetas
+        import glob as _glob
+        archivos_wav = sorted(
+            _glob.glob(os.path.join(audio_dir, "**", "*.wav"), recursive=True)
+        )
     else:
         archivos_wav = []
 
@@ -1776,19 +1786,26 @@ def main():
         archivos_wav = archivos_wav[:2]
 
     if not archivos_wav:
-        print("[ERROR] No hay WAVs en audio_tests/.")
+        print(f"[ERROR] No hay WAVs en {audio_dir}.")
         print("  Opción A: Grabar voz real → python3 bench_stt_exhaustivo.py --generar-audio")
         print("  Opción B: Fallback Piper  → python3 bench_stt_exhaustivo.py --generar-audio --piper-fallback")
+        print("  Opción C: Indicar carpeta → python3 bench_stt_exhaustivo.py --audios-dir <DIR>")
         sys.exit(1)
 
-    # Empareja cada archivo con su ground truth por índice numérico del nombre
-    ground_truths = []
-    for f in archivos_wav:
-        idx = _indice_frase(os.path.basename(f))
-        if idx < len(FRASES):
-            ground_truths.append(FRASES[idx])
-        else:
-            ground_truths.append("")   # frase sin referencia conocida
+    # Ground truth: frases.txt en el directorio toma precedencia sobre el índice del nombre
+    frases_txt = os.path.join(audio_dir, "frases.txt")
+    if os.path.isfile(frases_txt):
+        with open(frases_txt, encoding="utf-8") as ft:
+            lineas = [l.strip() for l in ft if l.strip()]
+        ground_truths = [lineas[i] if i < len(lineas) else "" for i in range(len(archivos_wav))]
+    else:
+        ground_truths = []
+        for f in archivos_wav:
+            idx = _indice_frase(os.path.basename(f))
+            if idx < len(FRASES):
+                ground_truths.append(FRASES[idx])
+            else:
+                ground_truths.append("")   # frase sin referencia conocida
 
     print("=" * 70)
     print("BENCHMARK STT EXHAUSTIVO — RPi4")

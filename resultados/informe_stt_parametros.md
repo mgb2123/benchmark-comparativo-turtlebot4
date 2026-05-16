@@ -1,8 +1,8 @@
 # Benchmark STT — Documentación de Parámetros y Metodología
 
-> Generado automáticamente el 2026-04-15T22:11:03.901128
+> Generado automáticamente el 2026-05-16T00:15:46.913998
 
-> Hardware: AMD64 | 8 cores | RAM 16080.3 MB
+> Hardware: x86_64 | 8 cores | RAM 15687.3 MB
 
 
 ## 1. Objetivo del Benchmark
@@ -86,7 +86,7 @@ Tiempo de la primera transcripción, excluida de los promedios. La primera infer
 
 ## 5. Corpus de Prueba
 
-- **19 frases** de comandos de voz en español para robótica
+- **36 frases** de comandos de voz en español para robótica
 - Duración media: ~2.7 s por frase
 - Formato: WAV, mono, 16 kHz, PCM 16-bit
 - **Fuente**: audio sintético generado con Piper TTS (voz `es_ES-davefice-medium`). Para resultados representativos del uso real se recomienda audio humano grabado en condiciones similares al entorno de despliegue del robot.
@@ -143,9 +143,9 @@ python bench_stt_exhaustivo.py --weights 0.6 0.2 0.2
 ## 9. Resultados — Veredicto
 
 ```
-Mejor global (score=0.666): whisper-tiny_int8_beam1_best1
-Mejor velocidad (RTF=0.195):       whisper-tiny_int8_beam1_best1
-Mejor precision (WER=0.632):       whisper-base_int8_beam5_best3
+Mejor global (score=0.800): whisper-tiny_int8_beam1_best1
+Mejor velocidad (RTF=0.052):       whisper-tiny_int8_beam1_best1
+Mejor precision (WER=0.287):       vosk-small-es_c1000
 Pesos usados: alpha=0.4 (precision), beta=0.4 (velocidad), gamma=0.2 (RAM)
 ```
 
@@ -153,20 +153,19 @@ Pesos usados: alpha=0.4 (precision), beta=0.4 (velocidad), gamma=0.2 (RAM)
 
 | Pos | Configuración | Score | WER | CI 95% | RTF | RAM (MB) |
 |-----|--------------|-------|-----|--------|-----|----------|
-| 1 | `whisper-tiny_int8_beam1_best1` | 0.6664 | 0.834 | [0.684, 0.806] | 0.195 | 623.9 |
-| 2 | `whisper-tiny_int8_beam3_best1` | 0.6365 | 0.881 | [0.684, 0.806] | 0.205 | 629.1 |
-| 3 | `whisper-tiny_int8_beam5_best3` | 0.6302 | 0.825 | [0.657, 0.782] | 0.230 | 655.0 |
-| 4 | `whisper-base_int8_beam3_best1` | 0.5809 | 0.638 | [0.518, 0.656] | 0.338 | 768.4 |
-| 5 | `whisper-base_int8_beam5_best3` | 0.5725 | 0.632 | [0.502, 0.641] | 0.347 | 786.2 |
-| 6 | `whisper-tiny_float32_beam1_best1` | 0.5646 | 0.800 | [0.679, 0.801] | 0.294 | 754.5 |
-| 7 | `whisper-base_int8_beam1_best1` | 0.5621 | 0.651 | [0.534, 0.671] | 0.351 | 762.3 |
-| 8 | `whisper-tiny_float32_beam3_best1` | 0.5205 | 0.830 | [0.646, 0.773] | 0.323 | 766.5 |
-| 9 | `vosk-small-es_c8000` | 0.5203 | 0.964 | [0.913, 0.975] | 0.278 | 692.3 |
-| 10 | `vosk-small-es_c1000` | 0.5183 | 0.964 | [0.913, 0.975] | 0.278 | 723.2 |
-| 11 | `vosk-small-es_c2000` | 0.5066 | 0.964 | [0.913, 0.975] | 0.291 | 686.9 |
-| 12 | `vosk-small-es_c4000` | 0.4803 | 0.959 | [0.907, 0.972] | 0.317 | 689.2 |
-| 13 | `whisper-base_float32_beam1_best1` | 0.3538 | 0.705 | [0.571, 0.705] | 0.510 | 992.1 |
-| 14 | `vosk-large-es_c8000` | 0.0599 | 0.918 | [0.851, 0.936] | 0.540 | 3736.5 |
-| 15 | `vosk-large-es_c1000` | 0.0434 | 0.932 | [0.875, 0.952] | 0.550 | 3738.0 |
-| 16 | `vosk-large-es_c2000` | 0.0328 | 0.924 | [0.857, 0.940] | 0.563 | 3733.8 |
-| 17 | `vosk-large-es_c4000` | 0.0306 | 0.924 | [0.863, 0.944] | 0.565 | 3734.7 |
+| 1 | `whisper-tiny_int8_beam1_best1` | 0.7996 | 0.501 | [0.343, 0.440] | 0.052 | 881.8 |
+| 2 | `whisper-tiny_int8_beam3_best1` | 0.7755 | 0.462 | [0.290, 0.385] | 0.061 | 917.2 |
+| 3 | `vosk-small-es_c2000` | 0.7696 | 0.287 | [0.144, 0.221] | 0.069 | 1059.6 |
+| 4 | `vosk-small-es_c4000` | 0.7684 | 0.289 | [0.147, 0.224] | 0.069 | 1060.6 |
+| 5 | `vosk-small-es_c8000` | 0.7662 | 0.287 | [0.144, 0.221] | 0.070 | 1060.8 |
+| 6 | `vosk-small-es_c1000` | 0.7642 | 0.287 | [0.144, 0.221] | 0.071 | 1058.2 |
+| 7 | `whisper-tiny_int8_beam5_best3` | 0.7150 | 0.486 | [0.321, 0.416] | 0.077 | 926.8 |
+| 8 | `whisper-tiny_float32_beam3_best1` | 0.6275 | 0.481 | [0.316, 0.411] | 0.088 | 1082.0 |
+| 9 | `whisper-tiny_float32_beam1_best1` | 0.6259 | 0.511 | [0.351, 0.448] | 0.089 | 1045.4 |
+| 10 | `whisper-tiny_float32_beam5_best3` | 0.5974 | 0.468 | [0.293, 0.387] | 0.098 | 1097.4 |
+| 11 | `whisper-base_int8_beam3_best1` | 0.5799 | 0.380 | [0.197, 0.282] | 0.118 | 1079.6 |
+| 12 | `whisper-base_int8_beam1_best1` | 0.5706 | 0.391 | [0.217, 0.304] | 0.120 | 1076.7 |
+| 13 | `whisper-base_int8_beam5_best3` | 0.5135 | 0.397 | [0.217, 0.304] | 0.125 | 1185.4 |
+| 14 | `whisper-base_float32_beam3_best1` | 0.3140 | 0.400 | [0.212, 0.298] | 0.166 | 1394.8 |
+| 15 | `whisper-base_float32_beam1_best1` | 0.2892 | 0.388 | [0.207, 0.293] | 0.172 | 1426.8 |
+| 16 | `whisper-base_float32_beam5_best3` | 0.2669 | 0.389 | [0.202, 0.287] | 0.187 | 1365.5 |
