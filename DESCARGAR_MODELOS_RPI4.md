@@ -123,8 +123,8 @@ hf_hub_download(
 
 ### Decirle al benchmark LLM dónde están los modelos
 
-El script usa por defecto `models` (Windows).  
-En RPi4 pásale la ruta con el flag o con variable de entorno:
+El script usa por defecto una ruta relativa (`models/` junto al proyecto);
+puedes sobrescribirla con el flag o con variable de entorno:
 
 ```bash
 # Opción A — flag

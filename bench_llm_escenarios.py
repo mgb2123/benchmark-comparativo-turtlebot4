@@ -1371,8 +1371,9 @@ def main():
     parser.add_argument("--models-dir",
                         default=os.environ.get(
                             "LLM_MODELS_DIR",
-                            r"models"),
-                        help="Directorio de modelos GGUF (fuera de OneDrive para no sincronizar ~6 GB)")
+                            os.path.join(os.path.dirname(__file__),
+                                         "..", "..", "..", "..", "models")),
+                        help="Directorio de modelos GGUF")
     parser.add_argument("--output-dir",
                         default=os.path.join(os.path.dirname(__file__), "resultados"),
                         help="Directorio de salida")
